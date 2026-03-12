@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0046)file:///Users/talesvieira/Downloads/index.html -->
+<!-- saved from url=(0048)file:///Users/talesvieira/Downloads/index_1.html -->
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -934,12 +934,16 @@
       return { ok: true, local: true };
     }
     try {
-      const res = await fetch(SHEETS_URL, {
+      // Apps Script exige mode: no-cors quando chamado de domínio externo
+      // Com no-cors não conseguimos ler a resposta, mas os dados chegam normalmente
+      await fetch(SHEETS_URL, {
         method: "POST",
-        headers: { "Content-Type": "text/plain" }, // CORS exige text/plain no Apps Script
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain" },
         body: JSON.stringify(payload)
       });
-      return await res.json();
+      // no-cors sempre retorna resposta opaca — assumimos sucesso se não lançou erro
+      return { ok: true };
     } catch (err) {
       console.error("Erro ao enviar para Sheets:", err);
       return { ok: false, erro: err.message };
