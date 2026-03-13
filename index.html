@@ -923,7 +923,7 @@
   //  CONFIGURAÇÃO — cole aqui a URL gerada pelo Apps Script
   //  Após implantar: Implantar → Gerenciar implantações → copiar URL
   // ============================================================
-  const SHEETS_URL = "https://script.google.com/macros/s/AKfycbwiZ489T5xn0g3pRuOxOJmU4t8ZLxKVPMOf86wWEIAnpPSs0qToQ96imEqC7W9DbV_v/exec";
+  const SHEETS_URL = "https://script.google.com/macros/s/AKfycbzeN-88sFhEpfBPQT4HQHDVq_rSyC-N3E9_zes3s02-CS5j8Ney83NshJV_gqO0a_k8Cw/exec";
  
   // ============================================================
   //  Envia dados para o Google Sheets
@@ -933,12 +933,11 @@
       return { ok: true, local: true };
     }
     try {
-      // Usa proxy para contornar CORS do Apps Script
       const urlComDados = SHEETS_URL + "?payload=" + encodeURIComponent(JSON.stringify(payload));
-      const proxyUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent(urlComDados);
+      const proxyUrl = "https://corsproxy.io/?" + encodeURIComponent(urlComDados);
       const res = await fetch(proxyUrl);
-      const data = await res.json();
-      const resultado = JSON.parse(data.contents);
+      const texto = await res.text();
+      const resultado = JSON.parse(texto);
       return resultado;
     } catch (err) {
       console.error("Erro ao enviar para Sheets:", err);
