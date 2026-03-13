@@ -934,9 +934,18 @@
     }
     try {
       const urlFinal = SHEETS_URL + "?payload=" + encodeURIComponent(JSON.stringify(payload));
-      const res = await fetch(urlFinal, { method: "GET", mode: "no-cors" });
-      // no-cors não retorna resposta legível mas o Apps Script processa normalmente
-      return { ok: true };
+      // fetch com redirect:follow funciona com Apps Script — segue o redirect do Google automaticamente
+      const res = await fetch(urlFinal, {
+        method: "GET",
+        redirect: "follow"
+      });
+      const texto = await res.text();
+      try {
+        return JSON.parse(texto);
+      } catch(e) {
+        // Se não conseguir parsear, assumimos sucesso pois a requisição chegou
+        return { ok: true };
+      }
     } catch (err) {
       console.error("Erro ao enviar para Sheets:", err);
       return { ok: false, erro: err.message };
@@ -1279,3 +1288,4 @@
 </script>
 </body>
 </html>
+ 
