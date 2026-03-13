@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#0d1f0e">
 <title>Fazenda São Pedro</title>
 <link href="./index_files/css2" rel="stylesheet"
-<style>
+<style
   :root {
     --bg: #0d1f0e;
     --surface: #152216;
@@ -934,16 +934,15 @@
       return { ok: true, local: true };
     }
     try {
-      // Apps Script exige mode: no-cors quando chamado de domínio externo
-      // Com no-cors não conseguimos ler a resposta, mas os dados chegam normalmente
-      await fetch(SHEETS_URL, {
+      // Apps Script aceita CORS de domínios externos (Access-Control-Allow-Origin: *)
+      // Content-Type: text/plain evita preflight request (requisição simples)
+      const response = await fetch(SHEETS_URL, {
         method: "POST",
-        mode: "no-cors",
         headers: { "Content-Type": "text/plain" },
         body: JSON.stringify(payload)
       });
-      // no-cors sempre retorna resposta opaca — assumimos sucesso se não lançou erro
-      return { ok: true };
+      const data = await response.json();
+      return { ok: response.ok, data };
     } catch (err) {
       console.error("Erro ao enviar para Sheets:", err);
       return { ok: false, erro: err.message };
