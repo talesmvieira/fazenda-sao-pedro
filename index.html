@@ -1,3 +1,6 @@
+
+Copiar
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -930,20 +933,16 @@
   // ============================================================
   async function enviarParaSheets(payload) {
     if (!SHEETS_URL || SHEETS_URL === "COLE_AQUI_A_URL_DO_SCRIPT") {
-      console.warn("URL do script não configurada — salvando só localmente.");
       return { ok: true, local: true };
     }
     try {
-      // Apps Script exige mode: no-cors quando chamado de domínio externo
-      // Com no-cors não conseguimos ler a resposta, mas os dados chegam normalmente
-      await fetch(SHEETS_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "text/plain" },
-        body: JSON.stringify(payload)
-      });
-      // no-cors sempre retorna resposta opaca — assumimos sucesso se não lançou erro
-      return { ok: true };
+      // Usa proxy para contornar CORS do Apps Script
+      const urlComDados = SHEETS_URL + "?payload=" + encodeURIComponent(JSON.stringify(payload));
+      const proxyUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent(urlComDados);
+      const res = await fetch(proxyUrl);
+      const data = await res.json();
+      const resultado = JSON.parse(data.contents);
+      return resultado;
     } catch (err) {
       console.error("Erro ao enviar para Sheets:", err);
       return { ok: false, erro: err.message };
