@@ -1,17 +1,13 @@
 <!DOCTYPE html>
-<!-- saved from url=(0048)file:///Users/talesvieira/Downloads/index_1.html -->
-<html lang="pt-BR"><head>
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#0d1f0e">
 <title>Fazenda São Pedro</title>
-<!-- v3 -->
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet"
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #0d1f0e;
@@ -30,9 +26,9 @@
     --muted: #6b8a6c;
     --radius: 16px;
   }
-
+ 
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
+ 
   body {
     background: var(--bg);
     color: var(--text);
@@ -43,7 +39,7 @@
     padding-bottom: 100px;
     position: relative;
   }
-
+ 
   /* Texture overlay */
   body::before {
     content: '';
@@ -54,7 +50,7 @@
     z-index: 0;
     opacity: 0.4;
   }
-
+ 
   /* Header */
   .app-header {
     background: linear-gradient(180deg, #0a1a0b 0%, var(--bg) 100%);
@@ -63,14 +59,14 @@
     z-index: 1;
     border-bottom: 1px solid var(--border);
   }
-
+ 
   .farm-logo {
     display: flex;
     align-items: center;
     gap: 12px;
     margin-bottom: 4px;
   }
-
+ 
   .logo-icon {
     width: 40px; height: 40px;
     background: var(--green-dim);
@@ -81,7 +77,7 @@
     justify-content: center;
     font-size: 20px;
   }
-
+ 
   .farm-name {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 22px;
@@ -89,7 +85,7 @@
     letter-spacing: 0.5px;
     line-height: 1;
   }
-
+ 
   .farm-sub {
     font-size: 11px;
     color: var(--muted);
@@ -97,7 +93,7 @@
     text-transform: uppercase;
     margin-top: 2px;
   }
-
+ 
   .date-bar {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 13px;
@@ -105,7 +101,7 @@
     letter-spacing: 1px;
     margin-top: 12px;
   }
-
+ 
   /* Tab bar */
   .tab-bar {
     display: flex;
@@ -117,9 +113,9 @@
     overflow-x: auto;
     scrollbar-width: none;
   }
-
+ 
   .tab-bar::-webkit-scrollbar { display: none; }
-
+ 
   .tab {
     flex: 1;
     min-width: 80px;
@@ -136,25 +132,25 @@
     white-space: nowrap;
     user-select: none;
   }
-
+ 
   .tab.active { color: var(--green); border-bottom-color: var(--green); }
   .tab:active { opacity: 0.7; }
-
+ 
   /* Content */
   .content {
     padding: 24px 16px;
     position: relative;
     z-index: 1;
   }
-
+ 
   .screen { display: none; }
   .screen.active { display: block; animation: slideIn 0.25s ease; }
-
+ 
   @keyframes slideIn {
     from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
   }
-
+ 
   /* Cards */
   .card {
     background: var(--surface);
@@ -163,7 +159,7 @@
     padding: 20px;
     margin-bottom: 16px;
   }
-
+ 
   .card-title {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 11px;
@@ -176,24 +172,24 @@
     align-items: center;
     gap: 8px;
   }
-
+ 
   .card-title .dot {
     width: 6px; height: 6px;
     border-radius: 50%;
     background: var(--green);
     animation: pulse 2s infinite;
   }
-
+ 
   @keyframes pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.4; }
   }
-
+ 
   /* Form fields */
   .field {
     margin-bottom: 14px;
   }
-
+ 
   label {
     display: block;
     font-size: 12px;
@@ -203,7 +199,7 @@
     text-transform: uppercase;
     margin-bottom: 8px;
   }
-
+ 
   input, select, textarea {
     width: 100%;
     background: var(--surface2);
@@ -218,29 +214,29 @@
     -webkit-appearance: none;
     appearance: none;
   }
-
+ 
   input:focus, select:focus, textarea:focus {
     border-color: rgba(92,219,111,0.5);
     box-shadow: 0 0 0 3px rgba(92,219,111,0.08);
   }
-
+ 
   select {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b8a6c' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 16px center;
     padding-right: 44px;
   }
-
+ 
   select option { background: #1c2e1d; }
-
+ 
   textarea { resize: none; min-height: 80px; font-size: 15px; }
-
+ 
   .row-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
-
+ 
   /* Buttons */
   .btn-submit {
     width: 100%;
@@ -258,13 +254,13 @@
     transition: all 0.2s;
     margin-top: 8px;
   }
-
+ 
   .btn-submit:active { transform: scale(0.97); opacity: 0.9; }
-
+ 
   .btn-submit.yellow { background: var(--yellow); }
   .btn-submit.red { background: var(--red); }
   .btn-submit.blue { background: var(--blue); }
-
+ 
   /* Calculated display */
   .calc-display {
     background: var(--green-dim);
@@ -276,7 +272,7 @@
     align-items: center;
     margin-bottom: 14px;
   }
-
+ 
   .calc-label { font-size: 12px; color: var(--muted); }
   .calc-value {
     font-family: 'Barlow Condensed', sans-serif;
@@ -284,7 +280,7 @@
     font-weight: 700;
     color: var(--green);
   }
-
+ 
   /* Success toast */
   .toast {
     position: fixed;
@@ -305,15 +301,15 @@
     white-space: nowrap;
     pointer-events: none;
   }
-
+ 
   .toast.show {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
-
+ 
   /* History screen */
   .history-list { display: flex; flex-direction: column; gap: 10px; }
-
+ 
   .history-item {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -323,7 +319,7 @@
     gap: 14px;
     align-items: flex-start;
   }
-
+ 
   .history-icon {
     width: 40px; height: 40px;
     border-radius: 10px;
@@ -333,14 +329,14 @@
     font-size: 18px;
     flex-shrink: 0;
   }
-
+ 
   .history-icon.green { background: var(--green-dim); }
   .history-icon.yellow { background: var(--yellow-dim); }
   .history-icon.red { background: var(--red-dim); }
   .history-icon.blue { background: var(--blue-dim); }
-
+ 
   .history-info { flex: 1; min-width: 0; }
-
+ 
   .history-title {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 16px;
@@ -350,13 +346,13 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
-
+ 
   .history-meta {
     font-size: 12px;
     color: var(--muted);
     line-height: 1.5;
   }
-
+ 
   .history-value {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 18px;
@@ -364,10 +360,10 @@
     color: var(--green);
     flex-shrink: 0;
   }
-
+ 
   .history-value.yellow { color: var(--yellow); }
   .history-value.red { color: var(--red); }
-
+ 
   .empty-state {
     text-align: center;
     padding: 60px 20px;
@@ -375,9 +371,9 @@
     font-size: 14px;
     line-height: 2;
   }
-
+ 
   .empty-state .big { font-size: 40px; margin-bottom: 12px; display: block; }
-
+ 
   /* Sheets export */
   .export-card {
     background: linear-gradient(135deg, rgba(92,219,111,0.1), rgba(92,219,111,0.05));
@@ -387,21 +383,21 @@
     margin-bottom: 16px;
     text-align: center;
   }
-
+ 
   .export-card h3 {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 20px;
     font-weight: 800;
     margin-bottom: 8px;
   }
-
+ 
   .export-card p {
     font-size: 13px;
     color: var(--muted);
     line-height: 1.6;
     margin-bottom: 20px;
   }
-
+ 
   .btn-export {
     display: inline-block;
     background: var(--surface2);
@@ -418,13 +414,13 @@
     width: 100%;
     margin-bottom: 10px;
   }
-
+ 
   .btn-export:active { opacity: 0.7; }
-
+ 
   .instruction-steps {
     text-align: left;
   }
-
+ 
   .step {
     display: flex;
     gap: 12px;
@@ -434,9 +430,9 @@
     color: #b0c8b0;
     line-height: 1.5;
   }
-
+ 
   .step:last-child { border-bottom: none; }
-
+ 
   .step-num {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: 800;
@@ -445,7 +441,7 @@
     flex-shrink: 0;
     width: 20px;
   }
-
+ 
   /* Bottom nav */
   .bottom-nav {
     position: fixed;
@@ -460,7 +456,7 @@
     z-index: 20;
     padding: 8px 0 20px;
   }
-
+ 
   .nav-item {
     flex: 1;
     display: flex;
@@ -472,11 +468,11 @@
     transition: all 0.2s;
     user-select: none;
   }
-
+ 
   .nav-item:active { opacity: 0.7; }
-
+ 
   .nav-icon { font-size: 22px; }
-
+ 
   .nav-label {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 10px;
@@ -485,10 +481,10 @@
     font-weight: 600;
     text-transform: uppercase;
   }
-
+ 
   .nav-item.active .nav-label { color: var(--green); }
   .nav-item.active .nav-icon { filter: drop-shadow(0 0 6px rgba(92,219,111,0.5)); }
-
+ 
   /* Chips para funcionário */
   .chip-group {
     display: flex;
@@ -496,7 +492,7 @@
     gap: 8px;
     margin-bottom: 14px;
   }
-
+ 
   .chip {
     background: var(--surface2);
     border: 1px solid var(--border);
@@ -507,14 +503,14 @@
     transition: all 0.2s;
     user-select: none;
   }
-
+ 
   .chip.selected {
     background: var(--green-dim);
     border-color: rgba(92,219,111,0.4);
     color: var(--green);
     font-weight: 600;
   }
-
+ 
   .hm-hint {
     font-size: 12px;
     color: var(--muted);
@@ -524,7 +520,7 @@
     transition: all 0.3s;
     font-family: 'Barlow', sans-serif;
   }
-
+ 
   .hm-hint.has-value { color: var(--green); }
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 10px;
@@ -538,21 +534,21 @@
     align-items: center;
     gap: 10px;
   }
-
+ 
   .section-header::after {
     content: '';
     flex: 1;
     height: 1px;
     background: var(--border);
   }
-
+ 
   /* Tags de categoria */
   .cat-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
   }
-
+ 
   .cat-tag {
     background: var(--surface2);
     border: 1px solid var(--border);
@@ -564,12 +560,12 @@
     transition: all 0.2s;
     user-select: none;
   }
-
+ 
   .cat-tag.sel-yellow { background: var(--yellow-dim); border-color: rgba(245,200,66,0.4); color: var(--yellow); }
   .cat-tag.sel-red { background: var(--red-dim); border-color: rgba(255,107,91,0.4); color: var(--red); }
   .cat-tag.sel-blue { background: var(--blue-dim); border-color: rgba(91,184,245,0.4); color: var(--blue); }
   .cat-tag.sel-green { background: var(--green-dim); border-color: rgba(92,219,111,0.4); color: var(--green); }
-
+ 
   /* Resumo do dia */
   .summary-grid {
     display: grid;
@@ -577,14 +573,14 @@
     gap: 10px;
     margin-bottom: 16px;
   }
-
+ 
   .summary-tile {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 14px;
     padding: 16px;
   }
-
+ 
   .summary-tile .s-label { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
   .summary-tile .s-value {
     font-family: 'Barlow Condensed', sans-serif;
@@ -592,7 +588,7 @@
     font-weight: 800;
     line-height: 1;
   }
-
+ 
   .summary-tile .s-value.green { color: var(--green); }
   .summary-tile .s-value.yellow { color: var(--yellow); }
   .summary-tile .s-value.red { color: var(--red); }
@@ -600,7 +596,7 @@
 </style>
 </head>
 <body>
-
+ 
 <div class="app-header">
   <div class="farm-logo">
     <div class="logo-icon">🌾</div>
@@ -609,25 +605,25 @@
       <div class="farm-sub">Sistema de Lançamentos</div>
     </div>
   </div>
-  <div class="date-bar" id="dateBar">quinta-feira, 12 de março de 2026</div>
+  <div class="date-bar" id="dateBar">—</div>
 </div>
-
+ 
 <!-- Toast -->
 <div class="toast" id="toast"></div>
-
+ 
 <!-- Screens -->
 <div class="content">
-
+ 
   <!-- ABASTECIMENTO -->
   <div class="screen active" id="screen-abast">
     <div class="card">
       <div class="card-title"><span class="dot"></span>Abastecimento</div>
-
+ 
       <div class="field">
         <label>Seu nome</label>
         <input type="text" id="a-func" placeholder="Como você gosta de ser chamado..." autocomplete="name">
       </div>
-
+ 
       <div class="field">
         <label>Máquina</label>
         <select id="a-maq">
@@ -646,71 +642,71 @@
           <option>BH180</option>
         </select>
       </div>
-
+ 
       <div class="field">
         <label>Horímetro atual</label>
         <input type="number" id="a-hm-fin" placeholder="ex: 4534" inputmode="numeric">
         <div class="hm-hint" id="a-hm-hint"></div>
       </div>
-
+ 
       <div class="calc-display" id="a-horas-display" style="display:none">
         <span class="calc-label">⏱ Horas adicionadas</span>
         <span class="calc-value" id="a-horas-val">—</span>
       </div>
-
+ 
       <div class="field">
         <label>Litros Abastecidos</label>
         <input type="number" id="a-litros" placeholder="ex: 120" inputmode="decimal" step="0.1">
       </div>
-
+ 
       <div class="calc-display" id="a-consumo-display" style="display:none">
         <span class="calc-label">⛽ Consumo (L/h)</span>
         <span class="calc-value" id="a-consumo-val">—</span>
       </div>
-
+ 
       <div class="field">
         <label>Observação (opcional)</label>
         <textarea id="a-obs" placeholder="Qualquer detalhe relevante..."></textarea>
       </div>
-
+ 
       <button id="btn-abast" class="btn-submit" onclick="salvarAbastecimento()">✓ REGISTRAR</button>
     </div>
   </div>
-
+ 
   <!-- DESPESAS -->
   <div class="screen" id="screen-desp">
     <div class="card">
       <div class="card-title"><span class="dot" style="background:var(--yellow)"></span>Despesa / Gasto</div>
-
+ 
       <div class="field">
         <label>Seu nome</label>
         <input type="text" id="d-func" placeholder="Como você gosta de ser chamado..." autocomplete="name">
       </div>
-
+ 
       <div class="field">
         <label>Categoria</label>
         <div class="cat-tags" id="cat-tags">
-          <div class="cat-tag" onclick="selCat(this,&#39;Administrativo&#39;,&#39;sel-blue&#39;)">📋 Administrativo</div>
-          <div class="cat-tag" onclick="selCat(this,&#39;Manutenção&#39;,&#39;sel-red&#39;)">🔧 Manutenção</div>
-          <div class="cat-tag" onclick="selCat(this,&#39;Insumos&#39;,&#39;sel-green&#39;)">🌱 Insumos</div>
-          <div class="cat-tag" onclick="selCat(this,&#39;Terceiros&#39;,&#39;sel-yellow&#39;)">👷 Terceiros</div>
-          <div class="cat-tag" onclick="selCat(this,&#39;Logística&#39;,&#39;sel-blue&#39;)">🚛 Logística</div>
-          <div class="cat-tag" onclick="selCat(this,&#39;Pecuária&#39;,&#39;sel-green&#39;)">🐄 Pecuária</div>
-          <div class="cat-tag" onclick="selCat(this,&#39;Outros&#39;,&#39;sel-yellow&#39;)">📦 Outros</div>
+          <div class="cat-tag" onclick="selCat(this,'Administrativo','sel-blue')">📋 Administrativo</div>
+          <div class="cat-tag" onclick="selCat(this,'Manutenção','sel-red')">🔧 Manutenção</div>
+          <div class="cat-tag" onclick="selCat(this,'Insumos','sel-green')">🌱 Insumos</div>
+          <div class="cat-tag" onclick="selCat(this,'Terceiros','sel-yellow')">👷 Terceiros</div>
+          <div class="cat-tag" onclick="selCat(this,'Logística','sel-blue')">🚛 Logística</div>
+          <div class="cat-tag" onclick="selCat(this,'Pecuária','sel-green')">🐄 Pecuária</div>
+          <div class="cat-tag" onclick="selCat(this,'Outros','sel-yellow')">📦 Outros</div>
         </div>
         <input type="hidden" id="d-cat">
       </div>
-
+ 
       <div class="field">
         <label>Descrição</label>
         <input type="text" id="d-desc" placeholder="ex: Compra de óleo hidráulico">
       </div>
-
+ 
       <div class="field">
         <label>Valor (R$)</label>
         <input type="number" id="d-valor" placeholder="ex: 350,00" inputmode="decimal" step="0.01">
       </div>
-
+ 
       <div class="field">
         <label>Forma de Pagamento</label>
         <select id="d-pgto">
@@ -721,26 +717,26 @@
           <option>Nota / Crédito</option>
         </select>
       </div>
-
+ 
       <div class="field">
         <label>Observação (opcional)</label>
         <textarea id="d-obs" placeholder="Número de nota, fornecedor, etc..."></textarea>
       </div>
-
+ 
       <button id="btn-desp" class="btn-submit yellow" onclick="salvarDespesa()">✓ REGISTRAR</button>
     </div>
   </div>
-
+ 
   <!-- MANUTENÇÃO -->
   <div class="screen" id="screen-manut">
     <div class="card">
       <div class="card-title"><span class="dot" style="background:var(--red)"></span>Manutenção / Serviço</div>
-
+ 
       <div class="field">
         <label>Seu nome</label>
         <input type="text" id="m-func" placeholder="Como você gosta de ser chamado..." autocomplete="name">
       </div>
-
+ 
       <div class="field">
         <label>Máquina / Equipamento</label>
         <select id="m-maq">
@@ -761,7 +757,7 @@
           <option>Outros</option>
         </select>
       </div>
-
+ 
       <div class="field">
         <label>Tipo de Serviço</label>
         <select id="m-tipo">
@@ -773,17 +769,17 @@
           <option>Serviço externo</option>
         </select>
       </div>
-
+ 
       <div class="field">
         <label>Horímetro Atual</label>
         <input type="number" id="m-hm" placeholder="ex: 4534" inputmode="numeric">
       </div>
-
+ 
       <div class="field">
         <label>Descrição do serviço</label>
         <textarea id="m-desc" placeholder="O que foi feito / precisa ser feito..."></textarea>
       </div>
-
+ 
       <div class="row-2">
         <div class="field">
           <label>Custo (R$)</label>
@@ -798,21 +794,21 @@
           </select>
         </div>
       </div>
-
+ 
       <button id="btn-manut" class="btn-submit red" onclick="salvarManutencao()">✓ REGISTRAR</button>
     </div>
   </div>
-
+ 
   <!-- CAMPO -->
   <div class="screen" id="screen-campo">
     <div class="card">
       <div class="card-title"><span class="dot" style="background:var(--blue)"></span>Ocorrência de Campo</div>
-
+ 
       <div class="field">
         <label>Seu nome</label>
         <input type="text" id="c-func" placeholder="Como você gosta de ser chamado..." autocomplete="name">
       </div>
-
+ 
       <div class="field">
         <label>Tipo de Ocorrência</label>
         <select id="c-tipo">
@@ -830,21 +826,21 @@
           <option>Outro</option>
         </select>
       </div>
-
+ 
       <div class="field">
         <label>Talhão / Área</label>
         <input type="text" id="c-talhao" placeholder="ex: Talhão 3, Área Norte...">
       </div>
-
+ 
       <div class="field">
         <label>Descrição detalhada</label>
         <textarea id="c-desc" placeholder="Descreva o que aconteceu ou foi feito..." style="min-height: 100px;"></textarea>
       </div>
-
+ 
       <button id="btn-campo" class="btn-submit blue" onclick="salvarCampo()">✓ REGISTRAR</button>
     </div>
   </div>
-
+ 
   <!-- HISTÓRICO -->
   <div class="screen" id="screen-hist">
     <div class="section-header">Hoje</div>
@@ -854,7 +850,7 @@
       <div class="summary-tile"><div class="s-label">🔧 Manutenções</div><div class="s-value red" id="count-manut">0</div></div>
       <div class="summary-tile"><div class="s-label">🌱 Campo</div><div class="s-value blue" id="count-campo">0</div></div>
     </div>
-
+ 
     <div class="section-header">Lançamentos</div>
     <div id="history-list" class="history-list">
       <div class="empty-state">
@@ -863,7 +859,7 @@
       </div>
     </div>
   </div>
-
+ 
   <!-- EXPORTAR -->
   <div class="screen" id="screen-export">
     <div class="export-card">
@@ -871,7 +867,7 @@
       <p>Baixe o arquivo CSV com todos os lançamentos e importe no Google Sheets com 1 clique.</p>
       <button class="btn-export" onclick="exportCSV()">⬇ Baixar CSV dos lançamentos</button>
     </div>
-
+ 
     <div class="card">
       <div class="card-title">Como conectar ao Google Sheets</div>
       <div class="instruction-steps">
@@ -882,7 +878,7 @@
         <div class="step"><span class="step-num">★</span><span><strong>Versão automática:</strong> na Fase 02 vamos conectar isso direto via Google Apps Script — sem precisar baixar nada.</span></div>
       </div>
     </div>
-
+ 
     <div class="card">
       <div class="card-title">Dados em memória</div>
       <p style="font-size:13px; color:var(--muted); line-height:1.7;">
@@ -891,44 +887,44 @@
       </p>
     </div>
   </div>
-
+ 
 </div>
-
+ 
 <!-- Bottom Nav -->
 <div class="bottom-nav">
-  <div class="nav-item active" onclick="showScreen(&#39;abast&#39;,this)">
+  <div class="nav-item active" onclick="showScreen('abast',this)">
     <span class="nav-icon">⛽</span>
     <span class="nav-label">Abast.</span>
   </div>
-  <div class="nav-item" onclick="showScreen(&#39;desp&#39;,this)">
+  <div class="nav-item" onclick="showScreen('desp',this)">
     <span class="nav-icon">💰</span>
     <span class="nav-label">Despesa</span>
   </div>
-  <div class="nav-item" onclick="showScreen(&#39;manut&#39;,this)">
+  <div class="nav-item" onclick="showScreen('manut',this)">
     <span class="nav-icon">🔧</span>
     <span class="nav-label">Manut.</span>
   </div>
-  <div class="nav-item" onclick="showScreen(&#39;campo&#39;,this)">
+  <div class="nav-item" onclick="showScreen('campo',this)">
     <span class="nav-icon">🌱</span>
     <span class="nav-label">Campo</span>
   </div>
-  <div class="nav-item" onclick="showScreen(&#39;hist&#39;,this)">
+  <div class="nav-item" onclick="showScreen('hist',this)">
     <span class="nav-icon">📋</span>
     <span class="nav-label">Hist.</span>
   </div>
-  <div class="nav-item" onclick="showScreen(&#39;export&#39;,this)">
+  <div class="nav-item" onclick="showScreen('export',this)">
     <span class="nav-icon">📊</span>
     <span class="nav-label">Exportar</span>
   </div>
 </div>
-
+ 
 <script>
   // ============================================================
   //  CONFIGURAÇÃO — cole aqui a URL gerada pelo Apps Script
   //  Após implantar: Implantar → Gerenciar implantações → copiar URL
   // ============================================================
-  const SHEETS_URL = "https://script.google.com/macros/s/AKfycbyJyaSetPeniTl5CfIWKaSH8qrmg5uWpA1FNP_GZHEpidpsfdQ037qZhtH8d-GtbpIAcw/exec";
-
+  const SHEETS_URL = "https://script.google.com/macros/s/AKfycbwiZ489T5xn0g3pRuOxOJmU4t8ZLxKVPMOf86wWEIAnpPSs0qToQ96imEqC7W9DbV_v/exec";
+ 
   // ============================================================
   //  Envia dados para o Google Sheets
   // ============================================================
@@ -938,21 +934,22 @@
       return { ok: true, local: true };
     }
     try {
-      // Apps Script aceita CORS de domínios externos (Access-Control-Allow-Origin: *)
-      // Content-Type: text/plain evita preflight request (requisição simples)
-      const response = await fetch(SHEETS_URL, {
+      // Apps Script exige mode: no-cors quando chamado de domínio externo
+      // Com no-cors não conseguimos ler a resposta, mas os dados chegam normalmente
+      await fetch(SHEETS_URL, {
         method: "POST",
+        mode: "no-cors",
         headers: { "Content-Type": "text/plain" },
         body: JSON.stringify(payload)
       });
-      const data = await response.json();
-      return { ok: response.ok, data };
+      // no-cors sempre retorna resposta opaca — assumimos sucesso se não lançou erro
+      return { ok: true };
     } catch (err) {
       console.error("Erro ao enviar para Sheets:", err);
       return { ok: false, erro: err.message };
     }
   }
-
+ 
   function setBtnLoading(id, loading) {
     const btn = document.getElementById(id);
     if (!btn) return;
@@ -960,20 +957,20 @@
     btn.textContent = loading ? '⏳ ENVIANDO...' : '✓ REGISTRAR';
     btn.style.opacity = loading ? '0.7' : '1';
   }
-
+ 
   function dataHoje() {
     return new Date().toLocaleDateString('pt-BR');
   }
-
+ 
   // State
   const lancamentos = [];
   let catSelecionada = '';
-
+ 
   // Date
   const now = new Date();
   document.getElementById('dateBar').textContent =
     now.toLocaleDateString('pt-BR', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
-
+ 
   function showScreen(id, navEl) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
@@ -981,32 +978,32 @@
     navEl.classList.add('active');
     if (id === 'hist') renderHistory();
   }
-
+ 
   // Mapa de último horímetro por máquina (simula memória da sessão)
   const ultimoHorimetro = {};
-
+ 
   function calcHorasAbast() {
     const maq = document.getElementById('a-maq').value;
     const hmFin = parseFloat(document.getElementById('a-hm-fin').value);
     const hint = document.getElementById('a-hm-hint');
     const horasDisp = document.getElementById('a-horas-display');
-
+ 
     if (!hmFin || hmFin <= 0) {
       hint.textContent = '';
       hint.classList.remove('has-value');
       horasDisp.style.display = 'none';
       return;
     }
-
+ 
     const hmIni = maq && ultimoHorimetro[maq];
-
+ 
     if (hmIni && hmFin > hmIni) {
       const horas = (hmFin - hmIni).toFixed(1);
       hint.textContent = `+ ${horas}h em relação ao último registro (${hmIni}h)`;
       hint.classList.add('has-value');
       document.getElementById('a-horas-val').textContent = horas + 'h';
       horasDisp.style.display = 'flex';
-
+ 
       const litros = parseFloat(document.getElementById('a-litros').value);
       const consumoDisp = document.getElementById('a-consumo-display');
       if (litros > 0) {
@@ -1025,11 +1022,11 @@
       horasDisp.style.display = 'none';
     }
   }
-
+ 
   document.getElementById('a-maq').addEventListener('change', calcHorasAbast);
   document.getElementById('a-hm-fin').addEventListener('input', calcHorasAbast);
   document.getElementById('a-litros').addEventListener('input', calcHorasAbast);
-
+ 
   // Category selection
   function selCat(el, cat, cls) {
     document.querySelectorAll('.cat-tag').forEach(t => t.className = 'cat-tag');
@@ -1037,7 +1034,7 @@
     catSelecionada = cat;
     document.getElementById('d-cat').value = cat;
   }
-
+ 
   function showToast(msg, color) {
     const t = document.getElementById('toast');
     t.textContent = msg;
@@ -1046,29 +1043,29 @@
     t.classList.add('show');
     setTimeout(() => t.classList.remove('show'), 2500);
   }
-
+ 
   function getTimestamp() {
     return new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
   }
-
+ 
   async function salvarAbastecimento() {
     const func = document.getElementById('a-func').value.trim();
     const maq = document.getElementById('a-maq').value;
     const hmFin = document.getElementById('a-hm-fin').value;
     const litros = document.getElementById('a-litros').value;
-
+ 
     if (!func || !maq || !hmFin || !litros) {
       showToast('⚠ Preencha todos os campos!', 'var(--yellow)'); return;
     }
-
+ 
     const hmIni = ultimoHorimetro[maq];
     const horas = hmIni && parseFloat(hmFin) > hmIni
       ? (parseFloat(hmFin) - hmIni).toFixed(1) : null;
     const consumo = horas && parseFloat(litros) > 0
       ? (parseFloat(litros) / parseFloat(horas)).toFixed(1) : null;
-
+ 
     ultimoHorimetro[maq] = parseFloat(hmFin);
-
+ 
     // Envia para Google Sheets
     const payload = {
       tipo: "abastecimento",
@@ -1081,11 +1078,11 @@
       consumoLh: consumo || "—",
       obs: document.getElementById('a-obs').value
     };
-
+ 
     setBtnLoading('btn-abast', true);
     const res = await enviarParaSheets(payload);
     setBtnLoading('btn-abast', false);
-
+ 
     lancamentos.unshift({
       tipo: 'abastecimento', icone: '⛽', cor: 'green',
       titulo: maq,
@@ -1094,30 +1091,30 @@
       corValor: consumo && parseFloat(consumo) > 12 ? 'red' : '',
       enviado: res.ok
     });
-
+ 
     ['a-func','a-maq','a-hm-fin','a-litros','a-obs'].forEach(id => document.getElementById(id).value = '');
     document.getElementById('a-hm-hint').textContent = '';
     document.getElementById('a-hm-hint').classList.remove('has-value');
     document.getElementById('a-horas-display').style.display = 'none';
     document.getElementById('a-consumo-display').style.display = 'none';
-
+ 
     if (res.local) showToast('✓ Salvo localmente (sem URL)', 'var(--yellow)');
     else if (res.ok) showToast('✓ Enviado para o Sheets!');
     else showToast('⚠ Erro ao enviar — salvo local', 'var(--yellow)');
     updateCounts();
   }
-
+ 
   async function salvarDespesa() {
     const func = document.getElementById('d-func').value.trim();
     const cat = document.getElementById('d-cat').value;
     const desc = document.getElementById('d-desc').value;
     const valor = document.getElementById('d-valor').value;
     const pgto = document.getElementById('d-pgto').value;
-
+ 
     if (!func || !cat || !desc || !valor || !pgto) {
       showToast('⚠ Preencha todos os campos!', 'var(--yellow)'); return;
     }
-
+ 
     const payload = {
       tipo: "despesa",
       data: dataHoje(),
@@ -1128,11 +1125,11 @@
       pagamento: pgto,
       obs: document.getElementById('d-obs').value
     };
-
+ 
     setBtnLoading('btn-desp', true);
     const res = await enviarParaSheets(payload);
     setBtnLoading('btn-desp', false);
-
+ 
     lancamentos.unshift({
       tipo: 'despesa', icone: '💰', cor: 'yellow',
       titulo: desc,
@@ -1141,28 +1138,28 @@
       corValor: 'yellow',
       enviado: res.ok
     });
-
+ 
     ['d-func','d-desc','d-valor','d-pgto','d-obs'].forEach(id => document.getElementById(id).value = '');
     document.querySelectorAll('.cat-tag').forEach(t => t.className = 'cat-tag');
     catSelecionada = '';
     document.getElementById('d-cat').value = '';
-
+ 
     if (res.local) showToast('✓ Salvo localmente (sem URL)', 'var(--yellow)');
     else if (res.ok) showToast('✓ Enviado para o Sheets!', 'var(--yellow)');
     else showToast('⚠ Erro ao enviar — salvo local', 'var(--yellow)');
     updateCounts();
   }
-
+ 
   async function salvarManutencao() {
     const func = document.getElementById('m-func').value.trim();
     const maq = document.getElementById('m-maq').value;
     const tipo = document.getElementById('m-tipo').value;
     const desc = document.getElementById('m-desc').value;
-
+ 
     if (!func || !maq || !tipo || !desc) {
       showToast('⚠ Preencha os campos obrigatórios!', 'var(--yellow)'); return;
     }
-
+ 
     const payload = {
       tipo: "manutencao",
       data: dataHoje(),
@@ -1174,11 +1171,11 @@
       custo: document.getElementById('m-custo').value || 0,
       status: document.getElementById('m-status').value
     };
-
+ 
     setBtnLoading('btn-manut', true);
     const res = await enviarParaSheets(payload);
     setBtnLoading('btn-manut', false);
-
+ 
     lancamentos.unshift({
       tipo: 'manutencao', icone: '🔧', cor: 'red',
       titulo: maq + ' — ' + tipo,
@@ -1187,25 +1184,25 @@
       corValor: 'red',
       enviado: res.ok
     });
-
+ 
     ['m-func','m-maq','m-tipo','m-hm','m-desc','m-custo'].forEach(id => document.getElementById(id).value = '');
     document.getElementById('m-status').selectedIndex = 0;
-
+ 
     if (res.local) showToast('✓ Salvo localmente (sem URL)', 'var(--yellow)');
     else if (res.ok) showToast('✓ Enviado para o Sheets!', 'var(--red)');
     else showToast('⚠ Erro ao enviar — salvo local', 'var(--yellow)');
     updateCounts();
   }
-
+ 
   async function salvarCampo() {
     const func = document.getElementById('c-func').value.trim();
     const tipo = document.getElementById('c-tipo').value;
     const desc = document.getElementById('c-desc').value;
-
+ 
     if (!func || !tipo || !desc) {
       showToast('⚠ Preencha os campos obrigatórios!', 'var(--yellow)'); return;
     }
-
+ 
     const payload = {
       tipo: "campo",
       data: dataHoje(),
@@ -1214,11 +1211,11 @@
       talhao: document.getElementById('c-talhao').value || "Área geral",
       descricao: desc
     };
-
+ 
     setBtnLoading('btn-campo', true);
     const res = await enviarParaSheets(payload);
     setBtnLoading('btn-campo', false);
-
+ 
     lancamentos.unshift({
       tipo: 'campo', icone: '🌱', cor: 'blue',
       titulo: tipo,
@@ -1227,22 +1224,22 @@
       corValor: 'blue',
       enviado: res.ok
     });
-
+ 
     ['c-func','c-tipo','c-talhao','c-desc'].forEach(id => document.getElementById(id).value = '');
-
+ 
     if (res.local) showToast('✓ Salvo localmente (sem URL)', 'var(--yellow)');
     else if (res.ok) showToast('✓ Enviado para o Sheets!', 'var(--blue)');
     else showToast('⚠ Erro ao enviar — salvo local', 'var(--yellow)');
     updateCounts();
   }
-
+ 
   function updateCounts() {
     document.getElementById('count-abast').textContent = lancamentos.filter(l=>l.tipo==='abastecimento').length;
     document.getElementById('count-desp').textContent = lancamentos.filter(l=>l.tipo==='despesa').length;
     document.getElementById('count-manut').textContent = lancamentos.filter(l=>l.tipo==='manutencao').length;
     document.getElementById('count-campo').textContent = lancamentos.filter(l=>l.tipo==='campo').length;
   }
-
+ 
   function renderHistory() {
     updateCounts();
     const list = document.getElementById('history-list');
@@ -1261,12 +1258,12 @@
       </div>
     `).join('');
   }
-
+ 
   function exportCSV() {
     if (lancamentos.length === 0) {
       showToast('⚠ Nenhum lançamento para exportar', 'var(--yellow)'); return;
     }
-
+ 
     const allKeys = [...new Set(lancamentos.flatMap(l => Object.keys(l.raw)))];
     const rows = [allKeys.join(';')];
     lancamentos.forEach(l => {
@@ -1275,7 +1272,7 @@
         return String(v).includes(';') ? `"${v}"` : v;
       }).join(';'));
     });
-
+ 
     const bom = '\uFEFF';
     const blob = new Blob([bom + rows.join('\n')], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
@@ -1287,6 +1284,6 @@
     showToast('✓ CSV baixado com sucesso!');
   }
 </script>
-
-
-</body></html>
+</body>
+</html>
+ 
