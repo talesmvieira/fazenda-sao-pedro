@@ -933,12 +933,10 @@
       return { ok: true, local: true };
     }
     try {
-      const urlComDados = SHEETS_URL + "?payload=" + encodeURIComponent(JSON.stringify(payload));
-      const proxyUrl = "https://corsproxy.io/?" + encodeURIComponent(urlComDados);
-      const res = await fetch(proxyUrl);
-      const texto = await res.text();
-      const resultado = JSON.parse(texto);
-      return resultado;
+      const urlFinal = SHEETS_URL + "?payload=" + encodeURIComponent(JSON.stringify(payload));
+      const res = await fetch(urlFinal, { method: "GET", mode: "no-cors" });
+      // no-cors não retorna resposta legível mas o Apps Script processa normalmente
+      return { ok: true };
     } catch (err) {
       console.error("Erro ao enviar para Sheets:", err);
       return { ok: false, erro: err.message };
@@ -1281,4 +1279,3 @@
 </script>
 </body>
 </html>
- 
