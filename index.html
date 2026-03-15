@@ -630,7 +630,7 @@
       </div>
  
       <div class="field">
-        <label>Descrição</label>
+        <label>Descrição (opcional)</label>
         <input type="text" id="d-desc" placeholder="ex: Compra de óleo hidráulico">
       </div>
  
@@ -708,7 +708,7 @@
       </div>
  
       <div class="field">
-        <label>Descrição do serviço</label>
+        <label>Descrição do serviço (opcional)</label>
         <textarea id="m-desc" placeholder="O que foi feito / precisa ser feito..."></textarea>
       </div>
  
@@ -743,7 +743,7 @@
  
       <div class="field">
         <label>Tipo de Ocorrência</label>
-        <select id="c-tipo">
+        <select id="c-tipo" onchange="onTipoOcorrencia()">
           <option value="">Selecione...</option>
           <option>Aplicação de Defensivo</option>
           <option>Aplicação de Fertilizante</option>
@@ -759,13 +759,38 @@
         </select>
       </div>
  
+      <div class="field" id="c-tipo-defensivo-wrap" style="display:none">
+        <label>Tipo de Defensivo</label>
+        <select id="c-tipo-defensivo">
+          <option value="">Selecione...</option>
+          <option>Fungicida</option>
+          <option>Herbicida</option>
+          <option>Inseticida</option>
+          <option>Biofertilizante</option>
+          <option>Outros</option>
+        </select>
+      </div>
+ 
+      <div class="field" id="c-tipo-fertilizante-wrap" style="display:none">
+        <label>Tipo de Fertilizante</label>
+        <select id="c-tipo-fertilizante">
+          <option value="">Selecione...</option>
+          <option>Ureia</option>
+          <option>KCl</option>
+          <option>MAP</option>
+          <option>NPK</option>
+          <option>Superfosfato</option>
+          <option>Outros</option>
+        </select>
+      </div>
+ 
       <div class="field">
         <label>Talhão / Área</label>
         <input type="text" id="c-talhao" placeholder="ex: Talhão 3, Área Norte...">
       </div>
  
       <div class="field">
-        <label>Descrição detalhada</label>
+        <label>Descrição detalhada (opcional)</label>
         <textarea id="c-desc" placeholder="Descreva o que aconteceu ou foi feito..." style="min-height: 100px;"></textarea>
       </div>
  
@@ -1011,7 +1036,7 @@
     const valor = document.getElementById('d-valor').value;
     const pgto = document.getElementById('d-pgto').value;
  
-    if (!func || !cat || !desc || !valor || !pgto) {
+    if (!func || !cat || !valor || !pgto) {
       showToast('⚠ Preencha todos os campos!', 'var(--yellow)'); return;
     }
  
@@ -1032,7 +1057,7 @@
  
     lancamentos.unshift({
       tipo: 'despesa', icone: '💰', cor: 'yellow',
-      titulo: desc,
+      titulo: desc || cat,
       meta: `${func} · ${cat} · ${getTimestamp()}`,
       valor: 'R$ ' + parseFloat(valor).toLocaleString('pt-BR', {minimumFractionDigits:2}),
       corValor: 'yellow',
@@ -1056,7 +1081,7 @@
     const tipo = document.getElementById('m-tipo').value;
     const desc = document.getElementById('m-desc').value;
  
-    if (!func || !maq || !tipo || !desc) {
+    if (!func || !maq || !tipo) {
       showToast('⚠ Preencha os campos obrigatórios!', 'var(--yellow)'); return;
     }
  
@@ -1094,12 +1119,22 @@
     updateCounts();
   }
  
+  function onTipoOcorrencia() {
+    var tipo = document.getElementById('c-tipo').value;
+    document.getElementById('c-tipo-defensivo-wrap').style.display = (tipo === 'Aplicação de Defensivo') ? '' : 'none';
+    document.getElementById('c-tipo-fertilizante-wrap').style.display = (tipo === 'Aplicação de Fertilizante') ? '' : 'none';
+    if (tipo !== 'Aplicação de Defensivo') document.getElementById('c-tipo-defensivo').value = '';
+    if (tipo !== 'Aplicação de Fertilizante') document.getElementById('c-tipo-fertilizante').value = '';
+  }
+ 
   async function salvarCampo() {
     const func = document.getElementById('c-func').value.trim();
     const tipo = document.getElementById('c-tipo').value;
     const desc = document.getElementById('c-desc').value;
+    const tipoDefensivo = document.getElementById('c-tipo-defensivo').value;
+    const tipoFertilizante = document.getElementById('c-tipo-fertilizante').value;
  
-    if (!func || !tipo || !desc) {
+    if (!func || !tipo) {
       showToast('⚠ Preencha os campos obrigatórios!', 'var(--yellow)'); return;
     }
  
@@ -1108,6 +1143,9 @@
       data: dataHoje(),
       funcionario: func,
       ocorrencia: tipo,
+      tipoDefensivo: tipoDefensivo,
+      tipoFertilizante: tipoFertilizante,
+      subtipo: tipoDefensivo || tipoFertilizante || '',
       talhao: document.getElementById('c-talhao').value || "Área geral",
       descricao: desc
     };
@@ -1118,14 +1156,16 @@
  
     lancamentos.unshift({
       tipo: 'campo', icone: '🌱', cor: 'blue',
-      titulo: tipo,
+      titulo: tipo + (payload.subtipo ? ' — ' + payload.subtipo : ''),
       meta: `${func} · ${payload.talhao} · ${getTimestamp()}`,
       valor: '',
       corValor: 'blue',
       enviado: res.ok
     });
  
-    ['c-func','c-tipo','c-talhao','c-desc'].forEach(id => document.getElementById(id).value = '');
+    ['c-func','c-tipo','c-talhao','c-desc','c-tipo-defensivo','c-tipo-fertilizante'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('c-tipo-defensivo-wrap').style.display = 'none';
+    document.getElementById('c-tipo-fertilizante-wrap').style.display = 'none';
  
     if (res.local) showToast('✓ Salvo localmente (sem URL)', 'var(--yellow)');
     else if (res.ok) showToast('✓ Enviado para o Sheets!', 'var(--blue)');
@@ -1158,7 +1198,7 @@
       </div>
     `).join('');
   }
- </script>
+ <\/script>
 </body>
 </html>
  
