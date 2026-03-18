@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#0d1f0e">
 <title>Fazenda São Pedro</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Conensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #0d1f0e;
@@ -22,13 +22,15 @@
     --red-dim: rgba(255,107,91,0.12);
     --blue: #5bb8f5;
     --blue-dim: rgba(91,184,245,0.12);
+    --orange: #ff9a3c;
+    --orange-dim: rgba(255,154,60,0.12);
     --text: #e8f0e8;
     --muted: #6b8a6c;
     --radius: 16px;
   }
- 
+
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
- 
+
   body {
     background: var(--bg);
     color: var(--text);
@@ -39,8 +41,7 @@
     padding-bottom: 100px;
     position: relative;
   }
- 
-  /* Texture overlay */
+
   body::before {
     content: '';
     position: fixed;
@@ -50,700 +51,573 @@
     z-index: 0;
     opacity: 0.4;
   }
- 
-  /* Header */
-  .app-header {
-    background: linear-gradient(180deg, #0a1a0b 0%, var(--bg) 100%);
-    padding: 52px 24px 24px;
-    position: relative;
-    z-index: 1;
-    border-bottom: 1px solid var(--border);
-  }
- 
-  .farm-logo {
+
+  .hidden { display: none !important; }
+
+  /* ─── LOGIN / PIN ─────────────────────────── */
+  #tela-login, #tela-pin {
+    min-height: 100vh;
     display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 4px;
-  }
- 
-  .logo-icon {
-    width: 40px; height: 40px;
-    background: var(--green-dim);
-    border: 1px solid rgba(92,219,111,0.3);
-    border-radius: 12px;
-    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
-  }
- 
-  .farm-name {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 22px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    line-height: 1;
-  }
- 
-  .farm-sub {
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-top: 2px;
-  }
- 
-  .date-bar {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 13px;
-    color: var(--muted);
-    letter-spacing: 1px;
-    margin-top: 12px;
-  }
- 
-  /* Tab bar */
-  .tab-bar {
-    display: flex;
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
- 
-  .tab-bar::-webkit-scrollbar { display: none; }
- 
-  .tab {
-    flex: 1;
-    min-width: 80px;
-    padding: 14px 8px;
-    text-align: center;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: var(--muted);
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    transition: all 0.2s;
-    white-space: nowrap;
-    user-select: none;
-  }
- 
-  .tab.active { color: var(--green); border-bottom-color: var(--green); }
-  .tab:active { opacity: 0.7; }
- 
-  /* Content */
-  .content {
-    padding: 24px 16px;
+    padding: 32px 24px;
     position: relative;
     z-index: 1;
   }
- 
-  .screen { display: none; }
-  .screen.active { display: block; animation: slideIn 0.25s ease; }
- 
-  @keyframes slideIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
+
+  .login-card, .pin-card {
+    width: 100%;
+    max-width: 360px;
   }
- 
-  /* Cards */
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 20px;
-    margin-bottom: 16px;
+
+  .login-logo {
+    width: 76px; height: 76px;
+    background: var(--green-dim);
+    border: 2px solid rgba(92,219,111,0.3);
+    border-radius: 24px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 38px;
+    margin: 0 auto 24px;
   }
- 
-  .card-title {
+
+  .login-title {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 3px;
+    font-size: 30px;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .login-sub {
     color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
     text-transform: uppercase;
+  }
+
+  .login-question {
+    font-size: 14px;
+    color: var(--muted);
+    text-align: center;
     margin-bottom: 18px;
+  }
+
+  .login-btns { display: flex; flex-direction: column; gap: 12px; }
+
+  .login-btn {
+    width: 100%;
+    padding: 18px 20px;
+    border-radius: 16px;
+    border: 1px solid;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.15s;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 16px;
+    color: var(--text);
   }
- 
-  .card-title .dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--green);
-    animation: pulse 2s infinite;
-  }
- 
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
- 
-  /* Form fields */
-  .field {
-    margin-bottom: 14px;
-  }
- 
-  label {
+
+  .login-btn:active { transform: scale(0.97); }
+
+  .login-btn.func { border-color: rgba(92,219,111,0.35); background: var(--green-dim); }
+  .login-btn.gest { border-color: rgba(245,200,66,0.35); background: var(--yellow-dim); }
+
+  .login-btn-icon { font-size: 30px; flex-shrink: 0; }
+
+  .login-btn-text strong {
     display: block;
-    font-size: 12px;
-    font-weight: 600;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    letter-spacing: 0.5px;
+  }
+
+  .login-btn-text small { color: var(--muted); font-size: 12px; }
+
+  .back-link {
     color: var(--muted);
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 32px;
+  }
+
+  .pin-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .pin-sub { color: var(--muted); font-size: 13px; margin-bottom: 28px; }
+
+  .error-msg { color: var(--red); font-size: 12px; margin-top: 6px; }
+
+  /* ─── APP HEADER ───────────────────────────── */
+  .app-header {
+    background: linear-gradient(180deg, #0a1a0b 0%, var(--bg) 100%);
+    padding: 48px 20px 18px;
+    position: relative;
+    z-index: 1;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .farm-logo { display: flex; align-items: center; gap: 11px; }
+
+  .logo-icon {
+    width: 36px; height: 36px;
+    background: var(--green-dim);
+    border: 1px solid rgba(92,219,111,0.3);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+
+  .farm-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+  }
+
+  .farm-date { font-size: 11px; color: var(--muted); margin-top: 1px; }
+
+  .sair-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12px;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-family: 'Barlow', sans-serif;
+  }
+
+  /* ─── TAB BAR ──────────────────────────────── */
+  .tab-bar {
+    position: fixed;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    background: rgba(13,31,14,0.96);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border);
+    display: flex;
+    z-index: 100;
+    padding: 8px 0 20px;
+  }
+
+  .tab-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 8px 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    transition: color 0.2s;
+  }
+
+  .tab-btn.active { color: var(--green); }
+  .tab-btn .tab-icon { font-size: 21px; }
+
+  .tab-btn .tab-label {
+    font-size: 9px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
-    margin-bottom: 8px;
   }
- 
-  input, select, textarea {
+
+  /* ─── SECTIONS ─────────────────────────────── */
+  .section { padding: 22px 20px; position: relative; z-index: 1; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  .section-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .section-dot.green  { background: var(--green);  box-shadow: 0 0 8px var(--green); }
+  .section-dot.yellow { background: var(--yellow); box-shadow: 0 0 8px var(--yellow); }
+  .section-dot.red    { background: var(--red);    box-shadow: 0 0 8px var(--red); }
+  .section-dot.blue   { background: var(--blue);   box-shadow: 0 0 8px var(--blue); }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ─── FORM ─────────────────────────────────── */
+  .form-group { margin-bottom: 15px; }
+
+  label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 7px;
+  }
+
+  input[type=text], input[type=number], input[type=password],
+  select, textarea {
     width: 100%;
+    padding: 13px 15px;
     background: var(--surface2);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 14px 16px;
-    font-size: 16px;
-    font-family: 'Barlow', sans-serif;
     color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
     outline: none;
     transition: border-color 0.2s;
     -webkit-appearance: none;
-    appearance: none;
   }
- 
+
   input:focus, select:focus, textarea:focus {
-    border-color: rgba(92,219,111,0.5);
-    box-shadow: 0 0 0 3px rgba(92,219,111,0.08);
+    border-color: rgba(92,219,111,0.4);
   }
- 
+
+  textarea { resize: vertical; min-height: 76px; }
+
   select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b8a6c' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b8a6c' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
-    background-position: right 16px center;
-    padding-right: 44px;
+    background-position: right 14px center;
+    padding-right: 38px;
+    cursor: pointer;
   }
- 
+
   select option { background: #1c2e1d; }
- 
-  textarea { resize: none; min-height: 80px; font-size: 15px; }
- 
-  .row-2 {
+
+  /* ─── TYPE SELECTOR CARDS ───────────────────── */
+  .type-selector {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
+    margin-bottom: 22px;
   }
- 
-  /* Buttons */
-  .btn-submit {
-    width: 100%;
-    background: var(--green);
-    color: #0a1a0b;
-    border: none;
+
+  .type-card {
+    padding: 16px 12px;
+    background: var(--surface2);
+    border: 2px solid var(--border);
     border-radius: 14px;
-    padding: 18px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.15s;
+  }
+
+  .type-card:active { transform: scale(0.96); }
+  .type-card.selected-manut { border-color: var(--red); background: var(--red-dim); }
+  .type-card.selected-campo { border-color: var(--blue); background: var(--blue-dim); }
+
+  .type-card-icon { font-size: 28px; margin-bottom: 6px; }
+
+  .type-card-label {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 18px;
-    font-weight: 800;
-    letter-spacing: 2px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .type-card.selected-manut .type-card-label { color: var(--red); }
+  .type-card.selected-campo .type-card-label { color: var(--blue); }
+
+  /* ─── BUTTONS ──────────────────────────────── */
+  .btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 13px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     cursor: pointer;
-    transition: all 0.2s;
-    margin-top: 8px;
-  }
- 
-  .btn-submit:active { transform: scale(0.97); opacity: 0.9; }
- 
-  .btn-submit.yellow { background: var(--yellow); }
-  .btn-submit.red { background: var(--red); }
-  .btn-submit.blue { background: var(--blue); }
- 
-  /* Calculated display */
-  .calc-display {
-    background: var(--green-dim);
-    border: 1px solid rgba(92,219,111,0.2);
-    border-radius: 12px;
-    padding: 14px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 14px;
-  }
- 
-  .calc-label { font-size: 12px; color: var(--muted); }
-  .calc-value {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--green);
-  }
- 
-  /* Success toast */
-  .toast {
-    position: fixed;
-    bottom: 110px;
-    left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    background: var(--green);
-    color: #0a1a0b;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    letter-spacing: 1px;
-    padding: 14px 28px;
-    border-radius: 50px;
-    opacity: 0;
-    transition: all 0.3s;
-    z-index: 100;
-    white-space: nowrap;
-    pointer-events: none;
-  }
- 
-  .toast.show {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
- 
-  /* History screen */
-  .history-list { display: flex; flex-direction: column; gap: 10px; }
- 
-  .history-item {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 16px;
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-  }
- 
-  .history-icon {
-    width: 40px; height: 40px;
-    border-radius: 10px;
+    transition: all 0.15s;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    gap: 8px;
+    margin-top: 6px;
+  }
+
+  .btn:active { transform: scale(0.97); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .btn-green  { background: var(--green);  color: #0a1a0b; }
+  .btn-yellow { background: var(--yellow); color: #0a1a0b; }
+  .btn-red    { background: var(--red);    color: #fff; }
+  .btn-blue   { background: var(--blue);   color: #0a1a0b; }
+
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+
+  /* ─── TOAST ────────────────────────────────── */
+  #toast {
+    position: fixed;
+    top: 24px; left: 50%;
+    transform: translateX(-50%) translateY(-80px);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 11px 22px;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 999;
+    transition: transform 0.3s ease;
+    white-space: nowrap;
+    max-width: 90vw;
+    text-align: center;
+  }
+
+  #toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ─── HISTÓRICO ────────────────────────────── */
+  .hist-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .refresh-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 7px 13px;
+    border-radius: 10px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .hist-filter {
+    display: flex;
+    gap: 7px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .filter-chip {
+    padding: 6px 13px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: none;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: 'Barlow', sans-serif;
+  }
+
+  .filter-chip.active {
+    border-color: var(--green);
+    color: var(--green);
+    background: var(--green-dim);
+  }
+
+  .history-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    padding: 13px 15px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 9px;
+  }
+
+  .history-icon {
+    width: 40px; height: 40px;
+    border-radius: 11px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
     flex-shrink: 0;
   }
- 
-  .history-icon.green { background: var(--green-dim); }
+
+  .history-icon.green  { background: var(--green-dim); }
   .history-icon.yellow { background: var(--yellow-dim); }
-  .history-icon.red { background: var(--red-dim); }
-  .history-icon.blue { background: var(--blue-dim); }
- 
+  .history-icon.red    { background: var(--red-dim); }
+  .history-icon.blue   { background: var(--blue-dim); }
+
   .history-info { flex: 1; min-width: 0; }
- 
+
   .history-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 4px;
+    font-size: 14px;
+    font-weight: 600;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
- 
+
   .history-meta {
     font-size: 12px;
     color: var(--muted);
-    line-height: 1.5;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
- 
+
   .history-value {
     font-family: 'Barlow Condensed', sans-serif;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 700;
-    color: var(--green);
     flex-shrink: 0;
+    text-align: right;
   }
- 
+
+  .history-value.green  { color: var(--green); }
   .history-value.yellow { color: var(--yellow); }
-  .history-value.red { color: var(--red); }
- 
+  .history-value.red    { color: var(--red); }
+  .history-value.blue   { color: var(--blue); }
+
   .empty-state {
     text-align: center;
-    padding: 60px 20px;
+    padding: 48px 24px;
     color: var(--muted);
     font-size: 14px;
-    line-height: 2;
+    line-height: 1.8;
   }
- 
-  .empty-state .big { font-size: 40px; margin-bottom: 12px; display: block; }
-  
-  /* Bottom nav */
-  .bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 480px;
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-    display: flex;
-    z-index: 20;
-    padding: 8px 0 20px;
-  }
- 
-  .nav-item {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    padding: 8px 0;
-    cursor: pointer;
-    transition: all 0.2s;
-    user-select: none;
-  }
- 
-  .nav-item:active { opacity: 0.7; }
- 
-  .nav-icon { font-size: 22px; }
- 
-  .nav-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 10px;
-    letter-spacing: 1px;
+
+  .empty-state .big { display: block; font-size: 40px; margin-bottom: 12px; }
+
+  .loading-state {
+    text-align: center;
+    padding: 48px 24px;
     color: var(--muted);
-    font-weight: 600;
-    text-transform: uppercase;
-  }
- 
-  .nav-item.active .nav-label { color: var(--green); }
-  .nav-item.active .nav-icon { filter: drop-shadow(0 0 6px rgba(92,219,111,0.5)); }
- 
-  /* Chips para funcionário */
-  .chip-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 14px;
-  }
- 
-  .chip {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 8px 14px;
     font-size: 14px;
-    cursor: pointer;
-    transition: all 0.2s;
-    user-select: none;
   }
- 
-  .chip.selected {
-    background: var(--green-dim);
-    border-color: rgba(92,219,111,0.4);
-    color: var(--green);
-    font-weight: 600;
-  }
- 
-  .hm-hint {
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 6px;
-    padding-left: 4px;
-    min-height: 16px;
-    transition: all 0.3s;
-    font-family: 'Barlow', sans-serif;
-  }
- 
-  .hm-hint.has-value { color: var(--green); }
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin-bottom: 14px;
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
- 
-  .section-header::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
- 
-  /* Tags de categoria */
-  .cat-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
- 
-  .cat-tag {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 8px 16px;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-    user-select: none;
-  }
- 
-  .cat-tag.sel-yellow { background: var(--yellow-dim); border-color: rgba(245,200,66,0.4); color: var(--yellow); }
-  .cat-tag.sel-red { background: var(--red-dim); border-color: rgba(255,107,91,0.4); color: var(--red); }
-  .cat-tag.sel-blue { background: var(--blue-dim); border-color: rgba(91,184,245,0.4); color: var(--blue); }
-  .cat-tag.sel-green { background: var(--green-dim); border-color: rgba(92,219,111,0.4); color: var(--green); }
- 
-  /* Resumo do dia */
-  .summary-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 16px;
-  }
- 
-  .summary-tile {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 16px;
-  }
- 
-  .summary-tile .s-label { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
-  .summary-tile .s-value {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 26px;
-    font-weight: 800;
-    line-height: 1;
-  }
- 
-  .summary-tile .s-value.green { color: var(--green); }
-  .summary-tile .s-value.yellow { color: var(--yellow); }
-  .summary-tile .s-value.red { color: var(--red); }
-  .summary-tile .s-value.blue { color: var(--blue); }
+
+  /* Func mode: no bottom padding needed */
+  #app-func { padding-bottom: 40px; }
 </style>
 </head>
 <body>
- 
-<div class="app-header">
-  <div class="farm-logo">
-    <div class="logo-icon">🌾</div>
-    <div>
-      <div class="farm-name">Fazenda São Pedro</div>
-      <div class="farm-sub">Sistema de Lançamentos</div>
+
+<!-- ══════════════════════════════════════
+     TELA DE ACESSO
+══════════════════════════════════════ -->
+<div id="tela-login">
+  <div class="login-card">
+    <div class="login-logo">🌱</div>
+    <div class="login-title">Fazenda São Pedro</div>
+    <div class="login-sub">Sistema de lançamentos</div>
+    <div class="login-question">Como deseja acessar?</div>
+    <div class="login-btns">
+      <button class="login-btn func" onclick="acessarFuncionario()">
+        <div class="login-btn-icon">👷</div>
+        <div class="login-btn-text">
+          <strong>Funcionário</strong>
+          <small>Registrar atividade</small>
+        </div>
+      </button>
+      <button class="login-btn gest" onclick="mostrarPin()">
+        <div class="login-btn-icon">📊</div>
+        <div class="login-btn-text">
+          <strong>Gestor</strong>
+          <small>Acesso completo</small>
+        </div>
+      </button>
     </div>
   </div>
-  <div class="date-bar" id="dateBar">—</div>
 </div>
- 
-<!-- Toast -->
-<div class="toast" id="toast"></div>
- 
-<!-- Screens -->
-<div class="content">
- 
-  <!-- ABASTECIMENTO -->
-  <div class="screen active" id="screen-abast">
-    <div class="card">
-      <div class="card-title"><span class="dot"></span>Abastecimento</div>
- 
-      <div class="field">
-        <label>Seu nome</label>
-        <input type="text" id="a-func" placeholder="Como você gosta de ser chamado..." autocomplete="name">
-      </div>
- 
-      <div class="field">
-        <label>Máquina</label>
-        <select id="a-maq">
-          <option value="">Selecione a máquina...</option>
-          <option>Amarok</option>
-          <option>Autopropelido Pulverizador</option>
-          <option>Carregadeira</option>
-          <option>Colheitadeira</option>
-          <option>Ranger</option>
-          <option>A950</option>
-          <option>Trator Esteira</option>
-          <option>T7060</option>
-          <option>TM25</option>
-          <option>BM125</option>
-          <option>BH165</option>
-          <option>BH180</option>
+
+<!-- ══════════════════════════════════════
+     TELA PIN GESTOR
+══════════════════════════════════════ -->
+<div id="tela-pin" class="hidden">
+  <div class="pin-card" style="position:relative;z-index:1">
+    <div class="back-link" onclick="voltarLogin()">← Voltar</div>
+    <div class="pin-title">Acesso Gestor</div>
+    <div class="pin-sub">Digite a senha para continuar</div>
+    <div class="form-group">
+      <label>Senha</label>
+      <input type="password" id="pin-input" placeholder="••••••""WF�6���WFS�&�fb ���W�F�v��&�b�WfV�B�W����tV�FW"r�fW&�f�6%�ₒ#���F�c��F�b�C�'���W'&�"6�73�&W'&�"��6r��FFV�#�6V���6�'&WF�FV�FR��f�V�FR���F�c��'WGF��6�73�&'F�'F�זV���r"��6Ɩ6��'fW&�f�6%�ₒ"7G��S�&�&v���F��'�#�V�G&#��'WGF�����F�c���F�cࠣ���)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y �eT�4���8$���<;26Vv�7G&"��)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y����F�b�C�&�gV�2"6�73�&��FFV�#��F�b6�73�&ֆVFW"#��F�b6�73�&�VFW"�&�r#��F�b6�73�&f&����v�#��F�b6�73�&��v�֖6��#�	����F�c��F�c��F�b6�73�&f&����R#�f�V�F<:6�VG&���F�c��F�b6�73�&f&��FFR"�C�&gV�2�FFR#���F�c���F�c���F�c��'WGF��6�73�'6�"�'F�"��6Ɩ6��'f��F$��v�ₒ#�6�#��'WGF�����F�c���F�cࠢ�F�b6�73�'6V7F���#��F�b6�73�'6V7F���ֆVFW"#��F�b6�73�'6V7F����F�B&�VR#���F�c��F�b6�73�'6V7F����F�F�R#�&Vv�7G&"F�f�FFS��F�c���F�cࠢ�F�b6�73�&f�&��w&�W#���&V��6WR���S���&V��Ɩ�WBG�S�'FW�B"�C�&b����R"�6V���FW#�$6���f�<:�:�6��F����#���F�cࠢ�F�b6�73�'G�R�6V�V7F�"#��F�b6�73�'G�R�6&B"�C�&b�6&B���WB"��6Ɩ6��'6V�V6���%F��vbr�v��WBr�#��F�b6�73�'G�R�6&B֖6��#�	�Js��F�c��F�b6�73�'G�R�6&B��&V�#���WFV�:|:6���F�c���F�c��F�b6�73�'G�R�6&B"�C�&b�6&B�6��"��6Ɩ6��'6V�V6���%F��vbr�v6��r�#��F�b6�73�'G�R�6&B֖6��#�	�����F�c��F�b6�73�'G�R�6&B��&V�#�6����F�c���F�c���F�cࠢ���7V&f�&Ӣ��WFV�:|:6��gV�6���:&������F�b�C�&b�f�&����WB"6�73�&��FFV�#��F�b6�73�&f�&��w&�W#���&V���:V�����&V���6V�V7B�C�&b��#���F���f�VS�"#�6V�V6���R�:V��������F������6V�V7C���F�c��F�b6�73�&f�&��w&�W#���&V��F��FR6W'f�:v����&V���6V�V7B�C�&b�F���6W'b#���F���f�VS�"#�6V�V6���R������F������ion>Manutenção Preventiva</option>
+          <option>Manutenção Corretiva</option>
+          <option>Elétrica</option>
+          <option>Pneus / Borracharia</option>
+          <option>Troca de Óleo / Filtros</option>
+          <option>Hidráulica</option>
+          <option>Outro</option>
         </select>
       </div>
- 
-      <div class="field">
-        <label>Horímetro atual</label>
-        <input type="number" id="a-hm-fin" placeholder="ex: 4534" inputmode="numeric">
-        <div class="hm-hint" id="a-hm-hint"></div>
+      <div class="form-group">
+        <label>Horímetro Atual (opcional)</label>
+        <input type="number" id="f-hm" placeholder="ex: 4534">
       </div>
- 
-      <div class="calc-display" id="a-horas-display" style="display:none">
-        <span class="calc-label">⏱ Horas adicionadas</span>
-        <span class="calc-value" id="a-horas-val">—</span>
+      <div class="form-group">
+        <label>Descrição</label>
+        <textarea id="f-desc-manut" placeholder="Descreva o serviço realizado..."></textarea>
       </div>
- 
-      <div class="field">
-        <label>Litros Abastecidos</label>
-        <input type="number" id="a-litros" placeholder="ex: 120" inputmode="decimal" step="0.1">
+      <div class="form-group">
+        <label>Custo (R$) — opcional</label>
+        <input type="number" id="f-custo" placeholder="0.00" step="0.01">
       </div>
- 
-      <div class="calc-display" id="a-consumo-display" style="display:none">
-        <span class="calc-label">⛽ Consumo (L/h)</span>
-        <span class="calc-value" id="a-consumo-val">—</span>
+      <div class="form-group">
+        <label>Status</label>
+        <select id="f-status">
+          <option value="Concluída">Concluída</option>
+          <option value="Em andamento">Em andamento</option>
+          <option value="Aguardando peça">Aguardando peça</option>
+        </select>
       </div>
- 
-      <div class="field">
-        <label>Observação (opcional)</label>
-        <textarea id="a-obs" placeholder="Qualquer detalhe relevante..."></textarea>
-      </div>
- 
-      <button id="btn-abast" class="btn-submit" onclick="salvarAbastecimento()">✓ REGISTRAR</button>
+      <button class="btn btn-red" id="f-btn-manut" onclick="salvarRegistro('f','manut')">
+        ✓ Registrar Manutenção
+      </button>
     </div>
-  </div>
- 
-  <!-- DESPESAS -->
-  <div class="screen" id="screen-desp">
-    <div class="card">
-      <div class="card-title"><span class="dot" style="background:var(--yellow)"></span>Despesa / Gasto</div>
- 
-      <div class="field">
-        <label>Seu nome</label>
-        <input type="text" id="d-func" placeholder="Como você gosta de ser chamado..." autocomplete="name">
+
+    <!-- Subform: campo (funcionário) -->
+    <div id="f-form-campo" class="hidden">
+      <div class="form-group">
+        <label>Talhão (opcional)</label>
+        <input type="text" id="f-talhao" placeholder="ex: Talhão 1 / Sede">
       </div>
- 
-      <div class="field">
-        <label>Categoria</label>
-        <div class="cat-tags" id="cat-tags">
-          <div class="cat-tag" onclick="selCat(this,'Administrativo','sel-blue')">📋 Administrativo</div>
-          <div class="cat-tag" onclick="selCat(this,'Manutenção','sel-red')">🔧 Manutenção</div>
-          <div class="cat-tag" onclick="selCat(this,'Insumos','sel-green')">🌱 Insumos</div>
-          <div class="cat-tag" onclick="selCat(this,'Terceiros','sel-yellow')">👷 Terceiros</div>
-          <div class="cat-tag" onclick="selCat(this,'Logística','sel-blue')">🚛 Logística</div>
-          <div class="cat-tag" onclick="selCat(this,'Pecuária','sel-green')">🐄 Pecuária</div>
-          <div class="cat-tag" onclick="selCat(this,'Outros','sel-yellow')">📦 Outros</div>
-        </div>
-        <input type="hidden" id="d-cat">
-      </div>
- 
-      <div class="field">
-        <label>Descrição (opcional)</label>
-        <input type="text" id="d-desc" placeholder="ex: Compra de óleo hidráulico">
-      </div>
- 
-      <div class="field">
-        <label>Valor (R$)</label>
-        <input type="number" id="d-valor" placeholder="ex: 350,00" inputmode="decimal" step="0.01">
-      </div>
- 
-      <div class="field">
-        <label>Forma de Pagamento</label>
-        <select id="d-pgto">
-          <option value="">Selecione...</option>
-          <option>Dinheiro</option>
-          <option>PIX</option>
-          <option>Cartão</option>
-          <option>Boleto</option>
-        </select>
-      </div>
- 
-      <div class="field">
-        <label>Observação (opcional)</label>
-        <textarea id="d-obs" placeholder="Número de nota, fornecedor, etc..."></textarea>
-      </div>
- 
-      <button id="btn-desp" class="btn-submit yellow" onclick="salvarDespesa()">✓ REGISTRAR</button>
-    </div>
-  </div>
- 
-  <!-- MANUTENÇÃO -->
-  <div class="screen" id="screen-manut">
-    <div class="card">
-      <div class="card-title"><span class="dot" style="background:var(--red)"></span>Manutenção / Serviço</div>
- 
-      <div class="field">
-        <label>Seu nome</label>
-        <input type="text" id="m-func" placeholder="Como você gosta de ser chamado..." autocomplete="name">
-      </div>
- 
-      <div class="field">
-        <label>Máquina / Equipamento</label>
-        <select id="m-maq">
-          <option value="">Selecione...</option>
-          <option>Amarok</option>
-          <option>Autopropelido Pulverizador</option>
-          <option>Carregadeira</option>
-          <option>Colheitadeira</option>
-          <option>Ranger</option>
-          <option>A950</option>
-          <option>Trator Esteira</option>
-          <option>T7060</option>
-          <option>TM25</option>
-          <option>BM125</option>
-          <option>BH165</option>
-          <option>BH180</option>
-          <option>Instalações</option>
-          <option>Outros</option>
-        </select>
-      </div>
- 
-      <div class="field">
-        <label>Tipo de Serviço</label>
-        <select id="m-tipo">
-          <option value="">Selecione...</option>
-          <option>Preventiva (programada)</option>
-          <option>Corretiva (quebrou)</option>
-          <option>Inspeção / Revisão</option>
-          <option>Troca de peça</option>
-          <option>Serviço externo</option>
-        </select>
-      </div>
- 
-      <div class="field">
-        <label>Horímetro Atual</label>
-        <input type="number" id="m-hm" placeholder="ex: 4534" inputmode="numeric">
-      </div>
- 
-      <div class="field">
-        <label>Descrição do serviço (opcional)</label>
-        <textarea id="m-desc" placeholder="O que foi feito / precisa ser feito..."></textarea>
-      </div>
- 
-      <div class="row-2">
-        <div class="field">
-          <label>Custo (R$)</label>
-          <input type="number" id="m-custo" placeholder="0,00" inputmode="decimal" step="0.01">
-        </div>
-        <div class="field">
-          <label>Status</label>
-          <select id="m-status">
-            <option>Concluído</option>
-            <option>Em andamento</option>
-            <option>Aguardando peça</option>
-          </select>
-        </div>
-      </div>
- 
-      <button id="btn-manut" class="btn-submit red" onclick="salvarManutencao()">✓ REGISTRAR</button>
-    </div>
-  </div>
- 
-  <!-- CAMPO -->
-  <div class="screen" id="screen-campo">
-    <div class="card">
-      <div class="card-title"><span class="dot" style="background:var(--blue)"></span>Ocorrência de Campo</div>
- 
-      <div class="field">
-        <label>Seu nome</label>
-        <input type="text" id="c-func" placeholder="Como você gosta de ser chamado..." autocomplete="name">
-      </div>
- 
-      <div class="field">
-        <label>Tipo de Ocorrência</label>
-        <select id="c-tipo" onchange="onTipoOcorrencia()">
+      <div class="form-group">
+        <label>Tipo de Atividade</label>
+        <select id="f-tipo-campo" onchange="onTipoCampo('f')">
           <option value="">Selecione...</option>
           <option>Aplicação de Defensivo</option>
           <option>Aplicação de Fertilizante</option>
@@ -758,447 +632,649 @@
           <option>Outro</option>
         </select>
       </div>
- 
-      <div class="field" id="c-tipo-defensivo-wrap" style="display:none">
+      <div class="form-group hidden" id="f-defensivo-wrap">
         <label>Tipo de Defensivo</label>
-        <select id="c-tipo-defensivo">
-          <option value="">Selecione...</option>
-          <option>Fungicida</option>
-          <option>Herbicida</option>
-          <option>Inseticida</option>
-          <option>Biofertilizante</option>
-          <option>Outros</option>
-        </select>
+        <input type="text" id="f-defensivo" placeholder="ex: Herbicida, Fungicida...">
       </div>
- 
-      <div class="field" id="c-tipo-fertilizante-wrap" style="display:none">
+      <div class="form-group hidden" id="f-fertilizante-wrap">
         <label>Tipo de Fertilizante</label>
-        <select id="c-tipo-fertilizante">
+        <input type="text" id="f-fertilizante" placeholder="ex: Ureia, MAP, KCL...">
+      </div>
+      <div class="form-group">
+        <label>Descrição</label>
+        <textarea id="f-desc-campo" placeholder="Descreva a atividade realizada..."></textarea>
+      </div>
+      <button class="btn btn-blue" id="f-btn-campo" onclick="salvarRegistro('f','campo')">
+        ✓ Registrar Atividade
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     APP GESTOR (4 abas)
+══════════════════════════════════════ -->
+<div id="app" class="hidden">
+  <div class="app-header">
+    <div class="header-row">
+      <div class="farm-logo">
+        <div class="logo-icon">🌱</div>
+        <div>
+          <div class="farm-name">Fazenda São Pedro</div>
+          <div class="farm-date" id="gest-date"></div>
+        </div>
+      </div>
+      <button class="sair-btn" onclick="voltarLogin()">Sair</button>
+    </div>
+  </div>
+
+  <!-- ── ABA: ABASTECIMENTO ────────────────── -->
+  <div id="sec-abast" class="section">
+    <div class="section-header">
+      <div class="section-dot green"></div>
+      <div class="section-title">Abastecimento</div>
+    </div>
+    <div class="form-group">
+      <label>Seu Nome</label>
+      <input type="text" id="a-func" placeholder="Como você é chamado...">
+    </div>
+    <div class="form-group">
+      <label>Máquina</label>
+      <select id="a-maq"><option value="">Selecione a máquina...</option></select>
+    </div>
+    <div class="form-group">
+      <label>Horímetro Atual</label>
+      <input type="number" id="a-hm" placeholder="ex: 4534">
+    </div>
+    <div class="form-group">
+      <label>Litros Abastecidos</label>
+      <input type="number" id="a-litros" placeholder="ex: 120" step="0.1">
+    </div>
+    <div class="form-group">
+      <label>Observação (opcional)</label>
+      <input type="text" id="a-obs" placeholder="Alguma observação...">
+    </div>
+    <button class="btn btn-green" id="btn-abast" onclick="salvarAbast()">
+      ✓ Registrar Abastecimento
+    </button>
+  </div>
+
+  <!-- ── ABA: REGISTRAR ATIVIDADE ─────────── -->
+  <div id="sec-reg" class="section hidden">
+    <div class="section-header">
+      <div class="section-dot blue"></div>
+      <div class="section-title">Registrar Atividade</div>
+    </div>
+
+    <div class="form-group">
+      <label>Seu Nome</label>
+      <input type="text" id="r-nome" placeholder="Como você é chamado...">
+    </div>
+
+    <div class="type-selector">
+      <div class="type-card" id="r-card-manut" onclick="selecionarTipo('r','manut')">
+        <div class="type-card-icon">🔧</div>
+        <div class="type-card-label">Manutenção</div>
+      </div>
+      <div class="type-card" id="r-card-campo" onclick="selecionarTipo('r','campo')">
+        <div class="type-card-icon">🌾</div>
+        <div class="type-card-label">Campo</div>
+      </div>
+    </div>
+
+    <!-- Subform: manutenção (gestor) -->
+    <div id="r-form-manut" class="hidden">
+      <div class="form-group">
+        <label>Máquina</label>
+        <select id="r-maq"><option value="">Selecione a máquina...</option></select>
+      </div>
+      <div class="form-group">
+        <label>Tipo de Serviço</label>
+        <select id="r-tipo-serv">
           <option value="">Selecione...</option>
-          <option>Ureia</option>
-          <option>KCl</option>
-          <option>MAP</option>
-          <option>NPK</option>
-          <option>Superfosfato</option>
-          <option>Outros</option>
+          <option>Manutenção Preventiva</option>
+          <option>Manutenção Corretiva</option>
+          <option>Elétrica</option>
+          <option>Pneus / Borracharia</option>
+          <option>Troca de Óleo / Filtros</option>
+          <option>Hidráulica</option>
+          <option>Outro</option>
         </select>
       </div>
- 
-      <div class="field">
-        <label>Talhão / Área</label>
-        <input type="text" id="c-talhao" placeholder="ex: Talhão 3, Área Norte...">
+      <div class="form-group">
+        <label>Horímetro Atual (opcional)</label>
+        <input type="number" id="r-hm" placeholder="ex: 4534">
       </div>
- 
-      <div class="field">
-        <label>Descrição detalhada (opcional)</label>
-        <textarea id="c-desc" placeholder="Descreva o que aconteceu ou foi feito..." style="min-height: 100px;"></textarea>
+      <div class="form-group">
+        <label>Descrição</label>
+        <textarea id="r-desc-manut" placeholder="Descreva o serviço..."></textarea>
       </div>
- 
-      <button id="btn-campo" class="btn-submit blue" onclick="salvarCampo()">✓ REGISTRAR</button>
+      <div class="form-group">
+        <label>Custo (R$) — opcional</label>
+        <input type="number" id="r-custo" placeholder="0.00" step="0.01">
+      </div>
+      <div class="form-group">
+        <label>Status</label>
+        <select id="r-status">
+          <option value="Concluída">Concluída</option>
+          <option value="Em andamento">Em andamento</option>
+          <option value="Aguardando peça">Aguardando peça</option>
+        </select>
+      </div>
+      <button class="btn btn-red" id="r-btn-manut" onclick="salvarRegistro('r','manut')">
+        ✓ Registrar Manutenção
+      </button>
+    </div>
+
+    <!-- Subform: campo (gestor) -->
+    <div id="r-form-campo" class="hidden">
+      <div class="form-group">
+        <label>Talhão (opcional)</label>
+        <input type="text" id="r-talhao" placeholder="ex: Talhão 1 / Sede">
+      </div>
+      <div class="form-group">
+        <label>Tipo de Atividade</label>
+        <select id="r-tipo-campo" onchange="onTipoCampo('r')">
+          <option value="">Selecione...</option>
+          <option>Aplicação de Defensivo</option>
+          <option>Aplicação de Fertilizante</option>
+          <option>Plantio</option>
+          <option>Preparo de Solo</option>
+          <option>Colheita</option>
+          <option>Infestação / Praga</option>
+          <option>Problema no Talhão</option>
+          <option>Manejo de Gado</option>
+          <option>Trabalho Curral</option>
+          <option>Manutenção de Cerca</option>
+          <option>Outro</option>
+        </select>
+      </div>
+      <div class="form-group hidden" id="r-defensivo-wrap">
+        <label>Tipo de Defensivo</label>
+        <input type="text" id="r-defensivo" placeholder="ex: Herbicida, Fungicida...">
+      </div>
+      <div class="form-group hidden" id="r-fertilizante-wrap">
+        <label>Tipo de Fertilizante</label>
+        <input type="text" id="r-fertilizante" placeholder="ex: Ureia, MAP, KCL...">
+      </div>
+      <div class="form-group">
+        <label>Descrição</label>
+        <textarea id="r-desc-campo" placeholder="Descreva a atividade..."></textarea>
+      </div>
+      <button class="btn btn-blue" id="r-btn-campo" onclick="salvarRegistro('r','campo')">
+        ✓ Registrar Atividade
+      </button>
     </div>
   </div>
- 
-  <!-- HISTÓRICO -->
-  <div class="screen" id="screen-hist">
-    <div class="section-header">Hoje</div>
-    <div class="summary-grid" id="summary-grid">
-      <div class="summary-tile"><div class="s-label">⛽ Abastecimentos</div><div class="s-value green" id="count-abast">0</div></div>
-      <div class="summary-tile"><div class="s-label">💰 Despesas</div><div class="s-value yellow" id="count-desp">0</div></div>
-      <div class="summary-tile"><div class="s-label">🔧 Manutenções</div><div class="s-value red" id="count-manut">0</div></div>
-      <div class="summary-tile"><div class="s-label">🌱 Campo</div><div class="s-value blue" id="count-campo">0</div></div>
+
+  <!-- ── ABA: DESPESA ──────────────────────── -->
+  <div id="sec-desp" class="section hidden">
+    <div class="section-header">
+      <div class="section-dot yellow"></div>
+      <div class="section-title">Despesa</div>
     </div>
- 
-    <div class="section-header">Lançamentos</div>
-    <div id="history-list" class="history-list">
-      <div class="empty-state">
-        <span class="big">📋</span>
-        Nenhum lançamento ainda.<br>Use as abas acima para registrar.
+    <div class="form-group">
+      <label>Seu Nome</label>
+      <input type="text" id="d-func" placeholder="Como você é chamado...">
+    </div>
+    <div class="form-group">
+      <label>Categoria</label>
+      <select id="d-cat" onchange="onCategoria()">
+        <option value="">Selecione...</option>
+        <option value="Combustível">Combustível</option>
+        <option value="Peças e Manutenção">Peças e Manutenção</option>
+        <option value="Insumos Agrícolas">Insumos Agrícolas</option>
+        <option value="Fertilizantes">Fertilizantes</option>
+        <option value="Defensivos">Defensivos</option>
+        <option value="Sementes">Sementes</option>
+        <option value="Serviços Terceirizados">Serviços Terceirizados</option>
+        <option value="Frete">Frete</option>
+        <option value="Mão de Obra">Mão de Obra</option>
+        <option value="Alimentação / Rancho">Alimentação / Rancho</option>
+        <option value="Equipamentos">Equipamentos</option>
+        <option value="Veterinário / Pecuária">Veterinário / Pecuária</option>
+        <option value="Impostos / Taxas">Impostos / Taxas</option>
+        <option value="Outros">Outros</option>
+      </select>
+    </div>
+    <div class="form-group hidden" id="d-subcat-wrap">
+      <label>Subcategoria / Detalhe</label>
+      <input type="text" id="d-subcat" placeholder="Especifique...">
+    </div>
+    <div class="form-group">
+      <label>Descrição</label>
+      <textarea id="d-desc" placeholder="Descreva a despesa..."></textarea>
+    </div>
+    <div class="form-group">
+      <label>Valor (R$)</label>
+      <input type="number" id="d-valor" placeholder="0.00" step="0.01">
+    </div>
+    <div class="form-group">
+      <label>Forma de Pagamento</label>
+      <select id="d-pag">
+        <option value="PIX">PIX</option>
+        <option value="Dinheiro">Dinheiro</option>
+        <option value="Cartão Débito">Cartão Débito</option>
+        <option value="Cartão Crédito">Cartão Crédito</option>
+        <option value="Boleto">Boleto</option>
+        <option value="Transferência">Transferência</option>
+      </select>
+    </div>
+    <button class="btn btn-yellow" id="btn-desp" onclick="salvarDesp()">
+      ✓ Registrar Despesa
+    </button>
+  </div>
+
+  <!-- ── ABA: HISTÓRICO ────────────────────── -->
+  <div id="sec-hist" class="section hidden">
+    <div class="hist-header">
+      <div class="section-header" style="margin-bottom:0">
+        <div class="section-dot green"></div>
+        <div class="section-title">Histórico</div>
       </div>
+      <button class="refresh-btn" onclick="carregarHistorico()">↻ Atualizar</button>
     </div>
-  </div> 
+    <div class="hist-filter">
+      <button class="filter-chip active" onclick="filtrarHist(this,'todos')">Todos</button>
+      <button class="filter-chip" onclick="filtrarHist(this,'abastecimento')">⛽ Abast.</button>
+      <button class="filter-chip" onclick="filtrarHist(this,'manutencao')">🔧 Manut.</button>
+      <button class="filter-chip" onclick="filtrarHist(this,'campo')">🌾 Campo</button>
+      <button class="filter-chip" onclick="filtrarHist(this,'despesa')">💰 Desp.</button>
+    </div>
+    <div id="hist-list">
+      <div class="loading-state">Carregando histórico...</div>
+    </div>
+  </div>
+
+  <!-- Tab bar (gestor) -->
+  <nav class="tab-bar">
+    <button class="tab-btn active" id="nav-abast" onclick="showTab('abast')">
+      <span class="tab-icon">⛽</span>
+      <span class="tab-label">Abast.</span>
+    </button>
+    <button class="tab-btn" id="nav-reg" onclick="showTab('reg')">
+      <span class="tab-icon">📋</span>
+      <span class="tab-label">Registrar</span>
+    </button>
+    <button class="tab-btn" id="nav-desp" onclick="showTab('desp')">
+      <span class="tab-icon">💰</span>
+      <span class="tab-label">Despesa</span>
+    </button>
+    <button class="tab-btn" id="nav-hist" onclick="showTab('hist')">
+      <span class="tab-icon">📜</span>
+      <span class="tab-label">Histórico</span>
+    </button>
+  </nav>
 </div>
- 
-<!-- Bottom Nav -->
-<div class="bottom-nav">
-  <div class="nav-item active" onclick="showScreen('abast',this)">
-    <span class="nav-icon">⛽</span>
-    <span class="nav-label">Abast.</span>
-  </div>
-  <div class="nav-item" onclick="showScreen('desp',this)">
-    <span class="nav-icon">💰</span>
-    <span class="nav-label">Despesa</span>
-  </div>
-  <div class="nav-item" onclick="showScreen('manut',this)">
-    <span class="nav-icon">🔧</span>
-    <span class="nav-label">Manut.</span>
-  </div>
-  <div class="nav-item" onclick="showScreen('campo',this)">
-    <span class="nav-icon">🌱</span>
-    <span class="nav-label">Campo</span>
-  </div>
-  <div class="nav-item" onclick="showScreen('hist',this)">
-    <span class="nav-icon">📋</span>
-    <span class="nav-label">Hist.</span>
-  </div></div>
- 
+
+<div id="toast"></div>
+
 <script>
-  // ============================================================
-  //  CONFIGURAÇÃO — cole aqui a URL gerada pelo Apps Script
-  //  Após implantar: Implantar → Gerenciar implantações → copiar URL
-  // ============================================================
-  const SHEETS_URL = "https://script.google.com/macros/s/AKfycbzeN-88sFhEpfBPQT4HQHDVq_rSyC-N3E9_zes3s02-CS5j8Ney83NshJV_gqO0a_k8Cw/exec";
- 
-  // ============================================================
-  //  Envia dados para o Google Sheets
-  // ============================================================
-  async function enviarParaSheets(payload) {
-    if (!SHEETS_URL || SHEETS_URL === "COLE_AQUI_A_URL_DO_SCRIPT") {
-      return { ok: true, local: true };
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzeN-88sFhEpfBPQT4HQHDVq_rSyC-N3E9_zes3s02-CS5j8Ney83NshJV_gqO0a_k8Cw/exec';
+const GESTOR_PIN = 'sp2026';
+
+const MAQUINAS = [
+  'A950','Amarok','Autopropelido Pulverizador',
+  'BH165','BH180','BM125','Carregadeira','Colheitadeira',
+  'MF 65x','Ranger','T7060','TM25','Trator Esteira'
+];
+
+const TIPO_CONFIG = {
+  abastecimento: { icone: '⛽', cor: 'green' },
+  despesa:       { icone: '💰', cor: 'yellow' },
+  manutencao:    { icone: '🔧', cor: 'red' },
+  campo:         { icone: '🌾', cor: 'blue' }
+};
+
+let histData = [];
+let filtroAtual = 'todos';
+
+// ── UTILITÁRIOS ─────────────────────────────────
+
+function dataHoje() {
+  const d = new Date();
+  return String(d.getDate()).padStart(2,'0') + '/' +
+         String(d.getMonth()+1).padStart(2,'0') + '/' +
+         d.getFullYear();
+}
+
+function dataFormatada() {
+  const d = new Date();
+  const dias = ['domingo','segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado'];
+  const meses = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+  return dias[d.getDay()] + ', ' + d.getDate() + ' de ' + meses[d.getMonth()] + ' de ' + d.getFullYear();
+}
+
+function showToast(msg, color) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.color = color || 'var(--text)';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+function setBtnLoading(id, loading, origText) {
+  const btn = document.getElementById(id);
+  if (!btn) return;
+  btn.disabled = loading;
+  if (loading) { btn.dataset.orig = btn.textContent; btn.textContent = '⏳ Enviando...'; }
+  else if (origText) btn.textContent = origText;
+  else if (btn.dataset.orig) btn.textContent = btn.dataset.orig;
+}
+
+async function enviar(payload) {
+  try {
+    const url = SCRIPT_URL + '?payload=' + encodeURIComponent(JSON.stringify(payload));
+    const res = await fetch(url, { redirect: 'follow' });
+    return await res.json();
+  } catch(e) {
+    return { ok: false, erro: e.message };
+  }
+}
+
+function populateMaquinas(selectId) {
+  const sel = document.getElementById(selectId);
+  if (!sel) return;
+  sel.innerHTML = '<option value="">Selecione a máquina...</option>';
+  MAQUINAS.forEach(m => {
+    const opt = document.createElement('option');
+    opt.value = m; opt.textContent = m;
+    sel.appendChild(opt);
+  });
+}
+
+function limpar(ids) {
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (el.tagName === 'SELECT') el.selectedIndex = 0;
+    else el.value = '';
+  });
+}
+
+// ── LOGIN / ACESSO ──────────────────────────────
+
+function mostrarPin() {
+  document.getElementById('tela-login').classList.add('hidden');
+  document.getElementById('tela-pin').classList.remove('hidden');
+  document.getElementById('pin-input').value = '';
+  document.getElementById('pin-erro').classList.add('hidden');
+  setTimeout(() => document.getElementById('pin-input').focus(), 100);
+}
+
+function voltarLogin() {
+  ['tela-pin','app-func','app'].forEach(id =>
+    document.getElementById(id).classList.add('hidden')
+  );
+  document.getElementById('tela-login').classList.remove('hidden');
+}
+
+function verificarPin() {
+  const pin = document.getElementById('pin-input').value.trim();
+  if (pin === GESTOR_PIN) {
+    document.getElementById('tela-pin').classList.add('hidden');
+    iniciarGestor();
+  } else {
+    document.getElementById('pin-erro').classList.remove('hidden');
+    document.getElementById('pin-input').select();
+  }
+}
+
+function acessarFuncionario() {
+  document.getElementById('tela-login').classList.add('hidden');
+  document.getElementById('app-func').classList.remove('hidden');
+  document.getElementById('func-date').textContent = dataFormatada();
+  populateMaquinas('f-maq');
+}
+
+function iniciarGestor() {
+  document.getElementById('app').classList.remove('hidden');
+  document.getElementById('gest-date').textContent = dataFormatada();
+  populateMaquinas('a-maq');
+  populateMaquinas('r-maq');
+  showTab('abast');
+}
+
+// ── TABS (GESTOR) ───────────────────────────────
+
+function showTab(tab) {
+  ['abast','reg','desp','hist'].forEach(t => {
+    document.getElementById('sec-' + t).classList.add('hidden');
+    document.getElementById('nav-' + t).classList.remove('active');
+  });
+  document.getElementById('sec-' + tab).classList.remove('hidden');
+  document.getElementById('nav-' + tab).classList.add('active');
+  if (tab === 'hist') carregarHistorico();
+  window.scrollTo(0, 0);
+}
+
+// ── TYPE SELECTOR (REGISTRAR) ───────────────────
+
+function selecionarTipo(prefix, tipo) {
+  document.getElementById(prefix+'-card-manut').className =
+    'type-card' + (tipo === 'manut' ? ' selected-manut' : '');
+  document.getElementById(prefix+'-card-campo').className =
+    'type-card' + (tipo === 'campo' ? ' selected-campo' : '');
+  document.getElementById(prefix+'-form-manut').classList.toggle('hidden', tipo !== 'manut');
+  document.getElementById(prefix+'-form-campo').classList.toggle('hidden', tipo !== 'campo');
+}
+
+function onTipoCampo(prefix) {
+  const v = document.getElementById(prefix+'-tipo-campo').value;
+  document.getElementById(prefix+'-defensivo-wrap').classList.toggle('hidden', v !== 'Aplicação de Defensivo');
+  document.getElementById(prefix+'-fertilizante-wrap').classList.toggle('hidden', v !== 'Aplicação de Fertilizante');
+}
+
+// ── CATEGORIA DESPESA ───────────────────────────
+
+function onCategoria() {
+  const cat = document.getElementById('d-cat').value;
+  document.getElementById('d-subcat-wrap').classList.toggle('hidden', !cat);
+}
+
+// ── SALVAR ABASTECIMENTO ────────────────────────
+
+async function salvarAbast() {
+  const func   = document.getElementById('a-func').value.trim();
+  const maq    = document.getElementById('a-maq').value;
+  const litros = document.getElementById('a-litros').value;
+
+  if (!func || !maq || !litros) {
+    showToast('⚠ Preencha os campos obrigatórios!', 'var(--yellow)'); return;
+  }
+
+  const payload = {
+    tipo: 'abastecimento',
+    data: dataHoje(),
+    funcionario: func,
+    maquina: maq,
+    horimetro: document.getElementById('a-hm').value || '—',
+    litros: litros,
+    obs: document.getElementById('a-obs').value
+  };
+
+  setBtnLoading('btn-abast', true);
+  const res = await enviar(payload);
+  setBtnLoading('btn-abast', false, '✓ Registrar Abastecimento');
+
+  if (res.ok) {
+    limpar(['a-func','a-maq','a-hm','a-litros','a-obs']);
+    showToast('✓ Abastecimento registrado!', 'var(--green)');
+  } else {
+    showToast('⚠ Erro: ' + (res.erro || 'Tente novamente'), 'var(--red)');
+  }
+}
+
+// ── SALVAR DESPESA ──────────────────────────────
+
+async function salvarDesp() {
+  const func  = document.getElementById('d-func').value.trim();
+  const cat   = document.getElementById('d-cat').value;
+  const valor = document.getElementById('d-valor').value;
+
+  if (!func || !cat || !valor) {
+    showToast('⚠ Preencha os campos obrigatórios!', 'var(--yellow)'); return;
+  }
+
+  const payload = {
+    tipo: 'despesa',
+    data: dataHoje(),
+    funcionario: func,
+    categoria: cat,
+    subcategoria: document.getElementById('d-subcat').value || cat,
+    descricao: document.getElementById('d-desc').value,
+    valor: valor,
+    pagamento: document.getElementById('d-pag').value
+  };
+
+  setBtnLoading('btn-desp', true);
+  const res = await enviar(payload);
+  setBtnLoading('btn-desp', false, '✓ Registrar Despesa');
+
+  if (res.ok) {
+    limpar(['d-func','d-cat','d-subcat','d-desc','d-valor']);
+    document.getElementById('d-subcat-wrap').classList.add('hidden');
+    showToast('✓ Despesa registrada!', 'var(--yellow)');
+  } else {
+    showToast('⚠ Erro: ' + (res.erro || 'Tente novamente'), 'var(--red)');
+  }
+}
+
+// ── SALVAR REGISTRO (MANUTENÇÃO / CAMPO) ────────
+
+async function salvarRegistro(prefix, tipo) {
+  const nome = document.getElementById(prefix+'-nome').value.trim();
+  if (!nome) { showToast('⚠ Informe seu nome!', 'var(--yellow)'); return; }
+
+  let payload;
+  let btnId;
+
+  if (tipo === 'manut') {
+    const maq      = document.getElementById(prefix+'-maq').value;
+    const tipoServ = document.getElementById(prefix+'-tipo-serv').value;
+
+    if (!maq || !tipoServ) {
+      showToast('⚠ Selecione a máquina e o tipo de serviço!', 'var(--yellow)'); return;
     }
-    try {
-      const urlFinal = SHEETS_URL + "?payload=" + encodeURIComponent(JSON.stringify(payload));
-      // fetch com redirect:follow funciona com Apps Script — segue o redirect do Google automaticamente
-      const res = await fetch(urlFinal, {
-        method: "GET",
-        redirect: "follow"
-      });
-      const texto = await res.text();
-      try {
-        return JSON.parse(texto);
-      } catch(e) {
-        // Se não conseguir parsear, assumimos sucesso pois a requisição chegou
-        return { ok: true };
-      }
-    } catch (err) {
-      console.error("Erro ao enviar para Sheets:", err);
-      return { ok: false, erro: err.message };
-    }
+
+    payload = {
+      tipo: 'manutencao',
+      data: dataHoje(),
+      funcionario: nome,
+      maquina: maq,
+      tipoServico: tipoServ,
+      horimetro: document.getElementById(prefix+'-hm').value || '—',
+      descricao: document.getElementById(prefix+'-desc-manut').value,
+      custo: document.getElementById(prefix+'-custo').value || '0',
+      status: document.getElementById(prefix+'-status').value
+    };
+
+    btnId = prefix+'-btn-manut';
+
+  } else { // campo
+    const tipoCampo = document.getElementById(prefix+'-tipo-campo').value;
+    if (!tipoCampo) { showToast('⚠ Selecione o tipo de atividade!', 'var(--yellow)'); return; }
+
+    payload = {
+      tipo: 'campo',
+      data: dataHoje(),
+      funcionario: nome,
+      talhao: document.getElementById(prefix+'-talhao').value || 'Área geral',
+      ocorrencia: tipoCampo,
+      tipoDefensivo: document.getElementById(prefix+'-defensivo').value,
+      tipoFertilizante: document.getElementById(prefix+'-fertilizante').value,
+      descricao: document.getElementById(prefix+'-desc-campo').value
+    };
+
+    btnId = prefix+'-btn-campo';
   }
- 
-  function setBtnLoading(id, loading) {
-    const btn = document.getElementById(id);
-    if (!btn) return;
-    btn.disabled = loading;
-    btn.textContent = loading ? '⏳ ENVIANDO...' : '✓ REGISTRAR';
-    btn.style.opacity = loading ? '0.7' : '1';
-  }
- 
-  function dataHoje() {
-    return new Date().toLocaleDateString('pt-BR');
-  }
- 
-  // State
-  const lancamentos = [];
-  let catSelecionada = '';
- 
-  // Date
-  const now = new Date();
-  document.getElementById('dateBar').textContent =
-    now.toLocaleDateString('pt-BR', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
- 
-  function showScreen(id, navEl) {
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    document.getElementById('screen-' + id).classList.add('active');
-    navEl.classList.add('active');
-    if (id === 'hist') renderHistory();
-  }
- 
-  // Mapa de último horímetro por máquina (simula memória da sessão)
-  const ultimoHorimetro = {};
- 
-  function calcHorasAbast() {
-    const maq = document.getElementById('a-maq').value;
-    const hmFin = parseFloat(document.getElementById('a-hm-fin').value);
-    const hint = document.getElementById('a-hm-hint');
-    const horasDisp = document.getElementById('a-horas-display');
- 
-    if (!hmFin || hmFin <= 0) {
-      hint.textContent = '';
-      hint.classList.remove('has-value');
-      horasDisp.style.display = 'none';
-      return;
-    }
- 
-    const hmIni = maq && ultimoHorimetro[maq];
- 
-    if (hmIni && hmFin > hmIni) {
-      const horas = (hmFin - hmIni).toFixed(1);
-      hint.textContent = `+ ${horas}h em relação ao último registro (${hmIni}h)`;
-      hint.classList.add('has-value');
-      document.getElementById('a-horas-val').textContent = horas + 'h';
-      horasDisp.style.display = 'flex';
- 
-      const litros = parseFloat(document.getElementById('a-litros').value);
-      const consumoDisp = document.getElementById('a-consumo-display');
-      if (litros > 0) {
-        const consumo = (litros / parseFloat(horas)).toFixed(1);
-        document.getElementById('a-consumo-val').textContent = consumo + ' L/h';
-        consumoDisp.style.display = 'flex';
-        document.getElementById('a-consumo-val').style.color = parseFloat(consumo) > 12 ? 'var(--red)' : 'var(--green)';
-      }
-    } else if (hmIni) {
-      hint.textContent = `Último registro desta máquina: ${hmIni}h`;
-      hint.classList.remove('has-value');
-      horasDisp.style.display = 'none';
+
+  setBtnLoading(btnId, true);
+  const res = await enviar(payload);
+  setBtnLoading(btnId, false);
+
+  if (res.ok) {
+    // Limpar campos
+    if (tipo === 'manut') {
+      limpar([prefix+'-maq', prefix+'-tipo-serv', prefix+'-status', prefix+'-hm', prefix+'-desc-manut', prefix+'-custo']);
     } else {
-      hint.textContent = 'Primeiro registro desta máquina — horas serão calculadas nos próximos lançamentos';
-      hint.classList.remove('has-value');
-      horasDisp.style.display = 'none';
+      limpar([prefix+'-talhao', prefix+'-tipo-campo', prefix+'-defensivo', prefix+'-fertilizante', prefix+'-desc-campo']);
+      document.getElementById(prefix+'-defensivo-wrap').classList.add('hidden');
+      document.getElementById(prefix+'-fertilizante-wrap').classList.add('hidden');
     }
+    showToast(
+      tipo === 'manut' ? '✓ Manutenção registrada!' : '✓ Atividade registrada!',
+      tipo === 'manut' ? 'var(--red)' : 'var(--blue)'
+    );
+  } else {
+    showToast('⚠ Erro: ' + (res.erro || 'Tente novamente'), 'var(--red)');
   }
- 
-  document.getElementById('a-maq').addEventListener('change', calcHorasAbast);
-  document.getElementById('a-hm-fin').addEventListener('input', calcHorasAbast);
-  document.getElementById('a-litros').addEventListener('input', calcHorasAbast);
- 
-  // Category selection
-  function selCat(el, cat, cls) {
-    document.querySelectorAll('.cat-tag').forEach(t => t.className = 'cat-tag');
-    el.classList.add(cls);
-    catSelecionada = cat;
-    document.getElementById('d-cat').value = cat;
-  }
- 
-  function showToast(msg, color) {
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.style.background = color || 'var(--green)';
-    t.style.color = (color === 'var(--yellow)') ? '#1a1a00' : '#0a1a0b';
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 2500);
-  }
- 
-  function getTimestamp() {
-    return new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-  }
- 
-  async function salvarAbastecimento() {
-    const func = document.getElementById('a-func').value.trim();
-    const maq = document.getElementById('a-maq').value;
-    const hmFin = document.getElementById('a-hm-fin').value;
-    const litros = document.getElementById('a-litros').value;
- 
-    if (!func || !maq || !hmFin || !litros) {
-      showToast('⚠ Preencha todos os campos!', 'var(--yellow)'); return;
+}
+
+// ── HISTÓRICO ───────────────────────────────────
+
+async function carregarHistorico() {
+  const list = document.getElementById('hist-list');
+  list.innerHTML = '<div class="loading-state">⏳ Carregando do servidor...</div>';
+
+  try {
+    const payload = { tipo: 'historico', limite: 100 };
+    const url = SCRIPT_URL + '?payload=' + encodeURIComponent(JSON.stringify(payload));
+    const res = await fetch(url, { redirect: 'follow' });
+    const data = await res.json();
+
+    if (data.ok && data.dados) {
+      histData = data.dados;
+      renderHistorico();
+    } else {
+      list.innerHTML = '<div class="empty-state"><span class="big">⚠️</span>Erro ao carregar.<br>' +
+                       (data.erro || 'Tente novamente.') + '</div>';
     }
- 
-    const hmIni = ultimoHorimetro[maq];
-    const horas = hmIni && parseFloat(hmFin) > hmIni
-      ? (parseFloat(hmFin) - hmIni).toFixed(1) : null;
-    const consumo = horas && parseFloat(litros) > 0
-      ? (parseFloat(litros) / parseFloat(horas)).toFixed(1) : null;
- 
-    ultimoHorimetro[maq] = parseFloat(hmFin);
- 
-    // Envia para Google Sheets
-    const payload = {
-      tipo: "abastecimento",
-      data: dataHoje(),
-      funcionario: func,
-      maquina: maq,
-      horimetro: hmFin,
-      horasTrabalhadas: horas || "—",
-      litros: litros,
-      consumoLh: consumo || "—",
-      obs: document.getElementById('a-obs').value
-    };
- 
-    setBtnLoading('btn-abast', true);
-    const res = await enviarParaSheets(payload);
-    setBtnLoading('btn-abast', false);
- 
-    lancamentos.unshift({
-      tipo: 'abastecimento', icone: '⛽', cor: 'green',
-      titulo: maq,
-      meta: `${func} · ${getTimestamp()}${horas ? ' · ' + horas + 'h' : ''}`,
-      valor: litros + 'L',
-      corValor: consumo && parseFloat(consumo) > 12 ? 'red' : '',
-      enviado: res.ok
-    });
- 
-    ['a-func','a-maq','a-hm-fin','a-litros','a-obs'].forEach(id => document.getElementById(id).value = '');
-    document.getElementById('a-hm-hint').textContent = '';
-    document.getElementById('a-hm-hint').classList.remove('has-value');
-    document.getElementById('a-horas-display').style.display = 'none';
-    document.getElementById('a-consumo-display').style.display = 'none';
- 
-    if (res.local) showToast('✓ Salvo localmente (sem URL)', 'var(--yellow)');
-    else if (res.ok) showToast('✓ Enviado para o Sheets!');
-    else showToast('⚠ Erro ao enviar — salvo local', 'var(--yellow)');
-    updateCounts();
+  } catch(e) {
+    list.innerHTML = '<div class="empty-state"><span class="big">📡</span>Sem conexão.<br>Verifique sua internet e tente novamente.</div>';
   }
- 
-  async function salvarDespesa() {
-    const func = document.getElementById('d-func').value.trim();
-    const cat = document.getElementById('d-cat').value;
-    const desc = document.getElementById('d-desc').value;
-    const valor = document.getElementById('d-valor').value;
-    const pgto = document.getElementById('d-pgto').value;
- 
-    if (!func || !cat || !valor || !pgto) {
-      showToast('⚠ Preencha todos os campos!', 'var(--yellow)'); return;
-    }
- 
-    const payload = {
-      tipo: "despesa",
-      data: dataHoje(),
-      funcionario: func,
-      categoria: cat,
-      descricao: desc,
-      valor: valor,
-      pagamento: pgto,
-      obs: document.getElementById('d-obs').value
-    };
- 
-    setBtnLoading('btn-desp', true);
-    const res = await enviarParaSheets(payload);
-    setBtnLoading('btn-desp', false);
- 
-    lancamentos.unshift({
-      tipo: 'despesa', icone: '💰', cor: 'yellow',
-      titulo: desc || cat,
-      meta: `${func} · ${cat} · ${getTimestamp()}`,
-      valor: 'R$ ' + parseFloat(valor).toLocaleString('pt-BR', {minimumFractionDigits:2}),
-      corValor: 'yellow',
-      enviado: res.ok
-    });
- 
-    ['d-func','d-desc','d-valor','d-pgto','d-obs'].forEach(id => document.getElementById(id).value = '');
-    document.querySelectorAll('.cat-tag').forEach(t => t.className = 'cat-tag');
-    catSelecionada = '';
-    document.getElementById('d-cat').value = '';
- 
-    if (res.local) showToast('✓ Salvo localmente (sem URL)', 'var(--yellow)');
-    else if (res.ok) showToast('✓ Enviado para o Sheets!', 'var(--yellow)');
-    else showToast('⚠ Erro ao enviar — salvo local', 'var(--yellow)');
-    updateCounts();
+}
+
+function filtrarHist(btn, filtro) {
+  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  filtroAtual = filtro;
+  renderHistorico();
+}
+
+function renderHistorico() {
+  const list = document.getElementById('hist-list');
+  const items = filtroAtual === 'todos'
+    ? histData
+    : histData.filter(h => h.tipo === filtroAtual);
+
+  if (!items || items.length === 0) {
+    list.innerHTML = '<div class="empty-state"><span class="big">📋</span>Nenhum registro encontrado.</div>';
+    return;
   }
- 
-  async function salvarManutencao() {
-    const func = document.getElementById('m-func').value.trim();
-    const maq = document.getElementById('m-maq').value;
-    const tipo = document.getElementById('m-tipo').value;
-    const desc = document.getElementById('m-desc').value;
- 
-    if (!func || !maq || !tipo) {
-      showToast('⚠ Preencha os campos obrigatórios!', 'var(--yellow)'); return;
-    }
- 
-    const payload = {
-      tipo: "manutencao",
-      data: dataHoje(),
-      funcionario: func,
-      maquina: maq,
-      tipoServico: tipo,
-      horimetro: document.getElementById('m-hm').value || "—",
-      descricao: desc,
-      custo: document.getElementById('m-custo').value || 0,
-      status: document.getElementById('m-status').value
-    };
- 
-    setBtnLoading('btn-manut', true);
-    const res = await enviarParaSheets(payload);
-    setBtnLoading('btn-manut', false);
- 
-    lancamentos.unshift({
-      tipo: 'manutencao', icone: '🔧', cor: 'red',
-      titulo: maq + ' — ' + tipo,
-      meta: `${func} · ${getTimestamp()} · ${payload.status}`,
-      valor: payload.custo ? 'R$ ' + parseFloat(payload.custo).toLocaleString('pt-BR', {minimumFractionDigits:2}) : '—',
-      corValor: 'red',
-      enviado: res.ok
-    });
- 
-    ['m-func','m-maq','m-tipo','m-hm','m-desc','m-custo'].forEach(id => document.getElementById(id).value = '');
-    document.getElementById('m-status').selectedIndex = 0;
- 
-    if (res.local) showToast('✓ Salvo localmente (sem URL)', 'var(--yellow)');
-    else if (res.ok) showToast('✓ Enviado para o Sheets!', 'var(--red)');
-    else showToast('⚠ Erro ao enviar — salvo local', 'var(--yellow)');
-    updateCounts();
-  }
- 
-  function onTipoOcorrencia() {
-    var tipo = document.getElementById('c-tipo').value;
-    document.getElementById('c-tipo-defensivo-wrap').style.display = (tipo === 'Aplicação de Defensivo') ? '' : 'none';
-    document.getElementById('c-tipo-fertilizante-wrap').style.display = (tipo === 'Aplicação de Fertilizante') ? '' : 'none';
-    if (tipo !== 'Aplicação de Defensivo') document.getElementById('c-tipo-defensivo').value = '';
-    if (tipo !== 'Aplicação de Fertilizante') document.getElementById('c-tipo-fertilizante').value = '';
-  }
- 
-  async function salvarCampo() {
-    const func = document.getElementById('c-func').value.trim();
-    const tipo = document.getElementById('c-tipo').value;
-    const desc = document.getElementById('c-desc').value;
-    const tipoDefensivo = document.getElementById('c-tipo-defensivo').value;
-    const tipoFertilizante = document.getElementById('c-tipo-fertilizante').value;
- 
-    if (!func || !tipo) {
-      showToast('⚠ Preencha os campos obrigatórios!', 'var(--yellow)'); return;
-    }
- 
-    const payload = {
-      tipo: "campo",
-      data: dataHoje(),
-      funcionario: func,
-      ocorrencia: tipo,
-      tipoDefensivo: tipoDefensivo,
-      tipoFertilizante: tipoFertilizante,
-      subtipo: tipoDefensivo || tipoFertilizante || '',
-      talhao: document.getElementById('c-talhao').value || "Área geral",
-      descricao: desc
-    };
- 
-    setBtnLoading('btn-campo', true);
-    const res = await enviarParaSheets(payload);
-    setBtnLoading('btn-campo', false);
- 
-    lancamentos.unshift({
-      tipo: 'campo', icone: '🌱', cor: 'blue',
-      titulo: tipo + (payload.subtipo ? ' — ' + payload.subtipo : ''),
-      meta: `${func} · ${payload.talhao} · ${getTimestamp()}`,
-      valor: '',
-      corValor: 'blue',
-      enviado: res.ok
-    });
- 
-    ['c-func','c-tipo','c-talhao','c-desc','c-tipo-defensivo','c-tipo-fertilizante'].forEach(id => document.getElementById(id).value = '');
-    document.getElementById('c-tipo-defensivo-wrap').style.display = 'none';
-    document.getElementById('c-tipo-fertilizante-wrap').style.display = 'none';
- 
-    if (res.local) showToast('✓ Salvo localmente (sem URL)', 'var(--yellow)');
-    else if (res.ok) showToast('✓ Enviado para o Sheets!', 'var(--blue)');
-    else showToast('⚠ Erro ao enviar — salvo local', 'var(--yellow)');
-    updateCounts();
-  }
- 
-  function updateCounts() {
-    document.getElementById('count-abast').textContent = lancamentos.filter(l=>l.tipo==='abastecimento').length;
-    document.getElementById('count-desp').textContent = lancamentos.filter(l=>l.tipo==='despesa').length;
-    document.getElementById('count-manut').textContent = lancamentos.filter(l=>l.tipo==='manutencao').length;
-    document.getElementById('count-campo').textContent = lancamentos.filter(l=>l.tipo==='campo').length;
-  }
- 
-  function renderHistory() {
-    updateCounts();
-    const list = document.getElementById('history-list');
-    if (lancamentos.length === 0) {
-      list.innerHTML = '<div class="empty-state"><span class="big">📋</span>Nenhum lançamento ainda.<br>Use as abas acima para registrar.</div>';
-      return;
-    }
-    list.innerHTML = lancamentos.map(l => `
+
+  list.innerHTML = items.map(h => {
+    const cfg = TIPO_CONFIG[h.tipo] || { icone: '📌', cor: 'green' };
+    const valorHtml = h.valor && h.valor !== '—' && h.valor !== 'R$ 0.00'
+      ? `<div class="history-value ${cfg.cor}">${h.valor}</div>`
+      : '';
+    return `
       <div class="history-item">
-        <div class="history-icon ${l.cor}">${l.icone}</div>
+        <div class="history-icon ${cfg.cor}">${cfg.icone}</div>
         <div class="history-info">
-          <div class="history-title">${l.titulo}</div>
-          <div class="history-meta">${l.meta}</div>
+          <div class="history-title">${h.titulo || '—'}</div>
+          <div class="history-meta">${h.funcionario || ''} · ${h.data || ''}</div>
         </div>
-        ${l.valor ? `<div class="history-value ${l.corValor}">${l.valor}</div>` : ''}
-      </div>
-    `).join('');
-  }
+        ${valorHtml}
+      </div>`;
+  }).join('');
+}
+
+// ── INIT ─────────────────────────────────────────
+// Preenche dropdowns de máquinas já na carga (elementos existem no DOM)
+populateMaquinas('a-maq');
+populateMaquinas('r-maq');
+populateMaquinas('f-maq');
 </script>
 </body>
 </html>
- 
