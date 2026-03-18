@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard â Fazenda SÃ£o Pedro</title>
+<title>Dashboard — Fazenda São Pedro</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <style>
@@ -264,7 +264,7 @@
 
   .chart-wrap.tall { height: 320px; }
 
-  /* Tabela de talhÃµes */
+  /* Tabela de talhões */
   .talhao-table {
     width: 100%;
     border-collapse: collapse;
@@ -350,7 +350,7 @@
     font-size: 12px;
   }
 
-  /* SeÃ§Ã£o de configuraÃ§Ã£o */
+  /* Seção de configuração */
   .setup-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -448,17 +448,17 @@
   <!-- Header -->
   <div class="header">
     <div class="header-left">
-      <div class="logo">ð¾</div>
+      <div class="logo">🌾</div>
       <div>
-        <div class="farm-name">Fazenda SÃ£o Pedro</div>
-        <div class="farm-sub">Dashboard de GestÃ£o</div>
+        <div class="farm-name">Fazenda São Pedro</div>
+        <div class="farm-sub">Dashboard de Gestão</div>
       </div>
     </div>
     <div class="controls">
       <select class="month-select" id="mes-select" onchange="carregarDados()">
         <option value="01">Janeiro</option>
         <option value="02">Fevereiro</option>
-        <option value="03" selected>MarÃ§o</option>
+        <option value="03" selected>Março</option>
         <option value="04">Abril</option>
         <option value="05">Maio</option>
         <option value="06">Junho</option>
@@ -479,15 +479,15 @@
     </div>
   </div>
 
-  <!-- Banner de configuraÃ§Ã£o -->
+  <!-- Banner de configuração -->
   <div class="config-banner" id="config-banner" style="display:none">
-    âï¸ <div><strong>Configure a URL do Apps Script</strong> para carregar dados reais da sua planilha. Clique em <strong>"Configurar ConexÃ£o"</strong> abaixo ou edite a variÃ¡vel <code>SCRIPT_URL</code> no cÃ³digo.</div>
+    ⚙️ <div><strong>Configure a URL do Apps Script</strong> para carregar dados reais da sua planilha. Clique em <strong>"Configurar Conexão"</strong> abaixo ou edite a variável <code>SCRIPT_URL</code> no código.</div>
   </div>
 
   <!-- Setup card -->
   <div class="setup-card" id="setup-card">
-    <h3>ð Conectar ao Google Sheets</h3>
-    <p>Cole a URL do seu Apps Script para carregar os dados reais da planilha.<br>Ã a mesma URL usada no app de lanÃ§amentos.</p>
+    <h3>🔌 Conectar ao Google Sheets</h3>
+    <p>Cole a URL do seu Apps Script para carregar os dados reais da planilha.<br>É a mesma URL usada no app de lançamentos.</p>
     <br>
     <input type="text" class="url-input" id="url-input"
       placeholder="https://script.google.com/macros/s/.../exec">
@@ -496,32 +496,32 @@
   </div>
 
   <!-- KPIs -->
-  <div class="section-label">Resumo do mÃªs</div>
+  <div class="section-label">Resumo do mês</div>
   <div class="kpi-grid" id="kpi-grid">
     <div class="kpi yellow">
       <div class="kpi-label">Total Despesas</div>
-      <div class="kpi-value" id="kpi-despesas">â</div>
+      <div class="kpi-value" id="kpi-despesas">—</div>
       <div class="kpi-sub" id="kpi-despesas-sub">carregando...</div>
     </div>
     <div class="kpi green">
-      <div class="kpi-label">AplicaÃ§Ãµes</div>
-      <div class="kpi-value" id="kpi-aplicacoes">â</div>
+      <div class="kpi-label">Aplicações</div>
+      <div class="kpi-value" id="kpi-aplicacoes">—</div>
       <div class="kpi-sub" id="kpi-aplicacoes-sub">carregando...</div>
     </div>
     <div class="kpi red">
       <div class="kpi-label">Maior Despesa</div>
-      <div class="kpi-value" id="kpi-maior">â</div>
+      <div class="kpi-value" id="kpi-maior">—</div>
       <div class="kpi-sub" id="kpi-maior-sub">carregando...</div>
     </div>
     <div class="kpi blue">
-      <div class="kpi-label">TalhÃµes Ativos</div>
-      <div class="kpi-value" id="kpi-talhoes">â</div>
+      <div class="kpi-label">Talhões Ativos</div>
+      <div class="kpi-value" id="kpi-talhoes">—</div>
       <div class="kpi-sub" id="kpi-talhoes-sub">carregando...</div>
     </div>
   </div>
 
   <!-- Charts -->
-  <div class="section-label">AnÃ¡lise de despesas</div>
+  <div class="section-label">Análise de despesas</div>
   <div class="charts-grid">
 
     <div class="chart-card">
@@ -536,8 +536,8 @@
 
     <div class="chart-card">
       <div class="chart-header">
-        <div class="chart-title">EvoluÃ§Ã£o de Despesas</div>
-        <div class="chart-badge">Ãltimos 6 meses</div>
+        <div class="chart-title">Evolução de Despesas</div>
+        <div class="chart-badge">Últimos 6 meses</div>
       </div>
       <div class="chart-wrap" id="wrap-despesas-evolucao">
         <div class="loading"><div class="spinner"></div>Carregando...</div>
@@ -546,12 +546,12 @@
 
   </div>
 
-  <div class="section-label">AplicaÃ§Ãµes de campo</div>
+  <div class="section-label">Aplicações de campo</div>
   <div class="charts-grid">
 
     <div class="chart-card">
       <div class="chart-header">
-        <div class="chart-title">AplicaÃ§Ãµes por Tipo</div>
+        <div class="chart-title">Aplicações por Tipo</div>
         <div class="chart-badge">Mensal</div>
       </div>
       <div class="chart-wrap" id="wrap-aplic-tipo">
@@ -561,7 +561,7 @@
 
     <div class="chart-card">
       <div class="chart-header">
-        <div class="chart-title">AplicaÃ§Ãµes por TalhÃ£o</div>
+        <div class="chart-title">Aplicações por Talhão</div>
         <div class="chart-badge">Top 10</div>
       </div>
       <div class="chart-wrap tall" id="wrap-aplic-talhao">
@@ -571,11 +571,11 @@
 
   </div>
 
-  <div class="section-label">Detalhe por talhÃ£o</div>
+  <div class="section-label">Detalhe por talhão</div>
   <div class="chart-card full" style="animation: fadeUp 0.6s ease 0.3s both;">
     <div class="chart-header">
-      <div class="chart-title">HistÃ³rico de AplicaÃ§Ãµes â Todos os TalhÃµes</div>
-      <div class="chart-badge" id="badge-talhoes-total">â</div>
+      <div class="chart-title">Histórico de Aplicações — Todos os Talhões</div>
+      <div class="chart-badge" id="badge-talhoes-total">—</div>
     </div>
     <div id="talhao-table-wrap">
       <div class="loading"><div class="spinner"></div>Carregando...</div>
@@ -586,18 +586,18 @@
 
 <script>
 // ============================================================
-//  CONFIGURAÃÃO â mesma URL do app de lanÃ§amentos
+//  CONFIGURAÇÃO — mesma URL do app de lançamentos
 // ============================================================
 var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzeN-88sFhEpfBPQT4HQHDVq_rSyC-N3E9_zes3s02-CS5j8Ney83NshJV_gqO0a_k8Cw/exec";
 
-// Registra instÃ¢ncias dos charts para destruir antes de recriar
+// Registra instâncias dos charts para destruir antes de recriar
 var charts = {};
 
 // ============================================================
-//  INICIALIZAÃÃO
+//  INICIALIZAÇÃO
 // ============================================================
 window.addEventListener('DOMContentLoaded', function() {
-  // Seleciona mÃªs atual
+  // Seleciona mês atual
   var agora = new Date();
   var mes = String(agora.getMonth() + 1).padStart(2, '0');
   document.getElementById('mes-select').value = mes;
@@ -658,7 +658,7 @@ function renderDashboard(d, mes, ano) {
 }
 
 // ============================================================
-//  DADOS DEMO (quando nÃ£o hÃ¡ conexÃ£o com Sheets)
+//  DADOS DEMO (quando não há conexão com Sheets)
 // ============================================================
 function renderDemo(mes, ano) {
   var demo = {
@@ -670,10 +670,10 @@ function renderDemo(mes, ano) {
     despesasPorCategoria: {
       "Insumos": 18200,
       "Administrativo": 9800,
-      "ManutenÃ§Ã£o": 5200,
-      "LogÃ­stica": 3100,
+      "Manutenção": 5200,
+      "Logística": 3100,
       "Terceiros": 1450,
-      "PecuÃ¡ria": 700
+      "Pecuária": 700
     },
     evolucaoMensal: {
       labels: ["Out", "Nov", "Dez", "Jan", "Fev", "Mar"],
@@ -684,20 +684,20 @@ function renderDemo(mes, ano) {
       "Fertilizante": 9,
       "Plantio": 3,
       "Preparo de Solo": 2,
-      "PecuÃ¡ria": 2
+      "Pecuária": 2
     },
     aplicacoesPorTalhao: {
-      "TalhÃ£o 1": 4, "TalhÃ£o 2": 3, "TalhÃ£o 3": 3,
-      "TalhÃ£o 4": 2, "TalhÃ£o 5": 2, "TalhÃ£o 6": 2,
-      "TalhÃ£o 7": 2, "TalhÃ£o 8": 1, "TalhÃ£o 9": 1, "TalhÃ£o 10": 1
+      "Talhão 1": 4, "Talhão 2": 3, "Talhão 3": 3,
+      "Talhão 4": 2, "Talhão 5": 2, "Talhão 6": 2,
+      "Talhão 7": 2, "Talhão 8": 1, "Talhão 9": 1, "Talhão 10": 1
     },
     tabelaTalhoes: [
-      { talhao: "TalhÃ£o 1", ocorrencia: "AplicaÃ§Ã£o de Defensivo", tipo: "Fungicida", data: "03/03/2026", funcionario: "Tales" },
-      { talhao: "TalhÃ£o 2", ocorrencia: "AplicaÃ§Ã£o de Fertilizante", tipo: "KCl", data: "05/03/2026", funcionario: "Hernandes" },
-      { talhao: "TalhÃ£o 3", ocorrencia: "Plantio", tipo: "â", data: "08/03/2026", funcionario: "Tales" },
-      { talhao: "TalhÃ£o 1", ocorrencia: "AplicaÃ§Ã£o de Defensivo", tipo: "Herbicida", data: "10/03/2026", funcionario: "Hernandes" },
-      { talhao: "TalhÃ£o 4", ocorrencia: "Preparo de Solo", tipo: "â", data: "12/03/2026", funcionario: "Tales" },
-      { talhao: "Ãrea Norte", ocorrencia: "Manejo de Gado", tipo: "PecuÃ¡ria", data: "14/03/2026", funcionario: "PeÃ£o" },
+      { talhao: "Talhão 1", ocorrencia: "Aplicação de Defensivo", tipo: "Fungicida", data: "03/03/2026", funcionario: "Tales" },
+      { talhao: "Talhão 2", ocorrencia: "Aplicação de Fertilizante", tipo: "KCl", data: "05/03/2026", funcionario: "Hernandes" },
+      { talhao: "Talhão 3", ocorrencia: "Plantio", tipo: "—", data: "08/03/2026", funcionario: "Tales" },
+      { talhao: "Talhão 1", ocorrencia: "Aplicação de Defensivo", tipo: "Herbicida", data: "10/03/2026", funcionario: "Hernandes" },
+      { talhao: "Talhão 4", ocorrencia: "Preparo de Solo", tipo: "—", data: "12/03/2026", funcionario: "Tales" },
+      { talhao: "Área Norte", ocorrencia: "Manejo de Gado", tipo: "Pecuária", data: "14/03/2026", funcionario: "Peão" },
     ]
   };
 
@@ -717,21 +717,21 @@ function renderDemo(mes, ano) {
 function atualizarKPIs(d) {
   document.getElementById('kpi-despesas').textContent =
     'R$ ' + (d.totalDespesas || 0).toLocaleString('pt-BR', {minimumFractionDigits:0});
-  document.getElementById('kpi-despesas-sub').textContent = 'no mÃªs selecionado';
+  document.getElementById('kpi-despesas-sub').textContent = 'no mês selecionado';
 
   document.getElementById('kpi-aplicacoes').textContent = d.qtdAplicacoes || 0;
   document.getElementById('kpi-aplicacoes-sub').textContent = 'registros no campo';
 
-  document.getElementById('kpi-maior').textContent = d.maiorCategoria || 'â';
+  document.getElementById('kpi-maior').textContent = d.maiorCategoria || '—';
   document.getElementById('kpi-maior-sub').textContent =
     d.maiorValor ? 'R$ ' + d.maiorValor.toLocaleString('pt-BR') : '';
 
   document.getElementById('kpi-talhoes').textContent = d.qtdTalhoes || 0;
-  document.getElementById('kpi-talhoes-sub').textContent = 'talhÃµes com atividade';
+  document.getElementById('kpi-talhoes-sub').textContent = 'talhões com atividade';
 }
 
 // ============================================================
-//  GRÃFICO â Despesas por Categoria (Donut)
+//  GRÁFICO — Despesas por Categoria (Donut)
 // ============================================================
 function renderGraficoDespesasCat(dados) {
   var wrap = document.getElementById('wrap-despesas-cat');
@@ -769,7 +769,7 @@ function renderGraficoDespesasCat(dados) {
 }
 
 // ============================================================
-//  GRÃFICO â EvoluÃ§Ã£o Mensal (Line)
+//  GRÁFICO — Evolução Mensal (Line)
 // ============================================================
 function renderGraficoEvolucao(dados) {
   var wrap = document.getElementById('wrap-despesas-evolucao');
@@ -810,13 +810,13 @@ function renderGraficoEvolucao(dados) {
 }
 
 // ============================================================
-//  GRÃFICO â AplicaÃ§Ãµes por Tipo (Bar horizontal)
+//  GRÁFICO — Aplicações por Tipo (Bar horizontal)
 // ============================================================
 function renderGraficoAplicTipo(dados) {
   var wrap = document.getElementById('wrap-aplic-tipo');
   wrap.innerHTML = '<canvas id="chart-aplic-tipo"></canvas>';
 
-  var cores = { 'Defensivo':'#ff6b5b','Fertilizante':'#6ee87a','Plantio':'#f5c842','Preparo de Solo':'#ff9a3c','PecuÃ¡ria':'#5bb8f5','Colheita':'#3dd68c','Outro':'#b48aff' };
+  var cores = { 'Defensivo':'#ff6b5b','Fertilizante':'#6ee87a','Plantio':'#f5c842','Preparo de Solo':'#ff9a3c','Pecuária':'#5bb8f5','Colheita':'#3dd68c','Outro':'#b48aff' };
 
   if (charts['aplic-tipo']) charts['aplic-tipo'].destroy();
   charts['aplic-tipo'] = new Chart(document.getElementById('chart-aplic-tipo'), {
@@ -843,7 +843,7 @@ function renderGraficoAplicTipo(dados) {
 }
 
 // ============================================================
-//  GRÃFICO â AplicaÃ§Ãµes por TalhÃ£o (Bar)
+//  GRÁFICO — Aplicações por Talhão (Bar)
 // ============================================================
 function renderGraficoAplicTalhao(dados) {
   var wrap = document.getElementById('wrap-aplic-talhao');
@@ -883,30 +883,30 @@ function renderGraficoAplicTalhao(dados) {
 }
 
 // ============================================================
-//  TABELA â Detalhe por talhÃ£o
+//  TABELA — Detalhe por talhão
 // ============================================================
 function renderTabelaTalhoes(registros) {
   document.getElementById('badge-talhoes-total').textContent = registros.length + ' registros';
 
   var tagClasses = {
-    'Defensivo': 'defensivo', 'AplicaÃ§Ã£o de Defensivo': 'defensivo',
-    'Fertilizante': 'fertilizante', 'AplicaÃ§Ã£o de Fertilizante': 'fertilizante',
+    'Defensivo': 'defensivo', 'Aplicação de Defensivo': 'defensivo',
+    'Fertilizante': 'fertilizante', 'Aplicação de Fertilizante': 'fertilizante',
     'Plantio': 'plantio',
-    'PecuÃ¡ria': 'pecuaria', 'Manejo de Gado': 'pecuaria', 'Trabalho Curral': 'pecuaria',
+    'Pecuária': 'pecuaria', 'Manejo de Gado': 'pecuaria', 'Trabalho Curral': 'pecuaria',
   };
 
   var html = '<table class="talhao-table"><thead><tr>' +
-    '<th>Data</th><th>TalhÃ£o</th><th>OcorrÃªncia</th><th>Tipo</th><th>ResponsÃ¡vel</th>' +
+    '<th>Data</th><th>Talhão</th><th>Ocorrência</th><th>Tipo</th><th>Responsável</th>' +
     '</tr></thead><tbody>';
 
   registros.forEach(function(r) {
     var cls = tagClasses[r.tipo] || tagClasses[r.ocorrencia] || 'outro';
     html += '<tr>' +
-      '<td style="font-family:\'DM Mono\',monospace;font-size:12px;color:var(--muted)">' + (r.data||'â') + '</td>' +
-      '<td style="font-weight:500">' + (r.talhao||'â') + '</td>' +
-      '<td>' + (r.ocorrencia||'â') + '</td>' +
-      '<td><span class="tag ' + cls + '">' + (r.tipo||'â') + '</span></td>' +
-      '<td style="color:var(--muted)">' + (r.funcionario||'â') + '</td>' +
+      '<td style="font-family:\'DM Mono\',monospace;font-size:12px;color:var(--muted)">' + (r.data||'—') + '</td>' +
+      '<td style="font-weight:500">' + (r.talhao||'—') + '</td>' +
+      '<td>' + (r.ocorrencia||'—') + '</td>' +
+      '<td><span class="tag ' + cls + '">' + (r.tipo||'—') + '</span></td>' +
+      '<td style="color:var(--muted)">' + (r.funcionario||'—') + '</td>' +
       '</tr>';
   });
 
