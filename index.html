@@ -575,82 +575,13 @@
     <div class="pin-sub">Digite a senha para continuar</div>
     <div class="form-group">
       <label>Senha</label>
-      <input type="password" id="pin-input" placeholder="••••••""WF�6���WFS�&�fb ���W�F�v��&�b�WfV�B�W����tV�FW"r�fW&�f�6%�ₒ#���F�c��F�b�C�'���W'&�"6�73�&W'&�"��6r��FFV�#�6V���6�'&WF�FV�FR��f�V�FR���F�c��'WGF��6�73�&'F�'F�זV���r"��6Ɩ6��'fW&�f�6%�ₒ"7G��S�&�&v���F��'�#�V�G&#��'WGF�����F�c���F�cࠣ���)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y �eT�4���8$���<;26Vv�7G&"��)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y)Y����F�b�C�&�gV�2"6�73�&��FFV�#��F�b6�73�&ֆVFW"#��F�b6�73�&�VFW"�&�r#��F�b6�73�&f&����v�#��F�b6�73�&��v�֖6��#�	����F�c��F�c��F�b6�73�&f&����R#�f�V�F<:6�VG&���F�c��F�b6�73�&f&��FFR"�C�&gV�2�FFR#���F�c���F�c���F�c��'WGF��6�73�'6�"�'F�"��6Ɩ6��'f��F$��v�ₒ#�6�#��'WGF�����F�c���F�cࠢ�F�b6�73�'6V7F���#��F�b6�73�'6V7F���ֆVFW"#��F�b6�73�'6V7F����F�B&�VR#���F�c��F�b6�73�'6V7F����F�F�R#�&Vv�7G&"F�f�FFS��F�c���F�cࠢ�F�b6�73�&f�&��w&�W#���&V��6WR���S���&V��Ɩ�WBG�S�'FW�B"�C�&b����R"�6V���FW#�$6���f�<:�:�6��F����#���F�cࠢ�F�b6�73�'G�R�6V�V7F�"#��F�b6�73�'G�R�6&B"�C�&b�6&B���WB"��6Ɩ6��'6V�V6���%F��vbr�v��WBr�#��F�b6�73�'G�R�6&B֖6��#�	�Js��F�c��F�b6�73�'G�R�6&B��&V�#���WFV�:|:6���F�c���F�c��F�b6�73�'G�R�6&B"�C�&b�6&B�6��"��6Ɩ6��'6V�V6���%F��vbr�v6��r�#��F�b6�73�'G�R�6&B֖6��#�	�����F�c��F�b6�73�'G�R�6&B��&V�#�6����F�c���F�c���F�cࠢ���7V&f�&Ӣ��WFV�:|:6��gV�6���:&������F�b�C�&b�f�&����WB"6�73�&��FFV�#��F�b6�73�&f�&��w&�W#���&V���:V�����&V���6V�V7B�C�&b��#���F���f�VS�"#�6V�V6���R�:V��������F������6V�V7C���F�c��F�b6�73�&f�&��w&�W#���&V��F��FR6W'f�:v����&V���6V�V7B�C�&b�F���6W'b#���F���f�VS�"#�6V�V6���R������F������ion>Manutenção Preventiva</option>
-          <option>Manutenção Corretiva</option>
-          <option>Elétrica</option>
-          <option>Pneus / Borracharia</option>
-          <option>Troca de Óleo / Filtros</option>
-          <option>Hidráulica</option>
-          <option>Outro</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Horímetro Atual (opcional)</label>
-        <input type="number" id="f-hm" placeholder="ex: 4534">
-      </div>
-      <div class="form-group">
-        <label>Descrição</label>
-        <textarea id="f-desc-manut" placeholder="Descreva o serviço realizado..."></textarea>
-      </div>
-      <div class="form-group">
-        <label>Custo (R$) — opcional</label>
-        <input type="number" id="f-custo" placeholder="0.00" step="0.01">
-      </div>
-      <div class="form-group">
-        <label>Status</label>
-        <select id="f-status">
-          <option value="Concluída">Concluída</option>
-          <option value="Em andamento">Em andamento</option>
-          <option value="Aguardando peça">Aguardando peça</option>
-        </select>
-      </div>
-      <button class="btn btn-red" id="f-btn-manut" onclick="salvarRegistro('f','manut')">
-        ✓ Registrar Manutenção
-      </button>
+      <input type="password" id="pin-input" placeholder="••••••" autocomplete="off"
+             onkeydown="if(event.key==='Enter') verificarPin()">
     </div>
-
-    <!-- Subform: campo (funcionário) -->
-    <div id="f-form-campo" class="hidden">
-      <div class="form-group">
-        <label>Talhão (opcional)</label>
-        <input type="text" id="f-talhao" placeholder="ex: Talhão 1 / Sede">
-      </div>
-      <div class="form-group">
-        <label>Tipo de Atividade</label>
-        <select id="f-tipo-campo" onchange="onTipoCampo('f')">
-          <option value="">Selecione...</option>
-          <option>Aplicação de Defensivo</option>
-          <option>Aplicação de Fertilizante</option>
-          <option>Plantio</option>
-          <option>Preparo de Solo</option>
-          <option>Colheita</option>
-          <option>Infestação / Praga</option>
-          <option>Problema no Talhão</option>
-          <option>Manejo de Gado</option>
-          <option>Trabalho Curral</option>
-          <option>Manutenção de Cerca</option>
-          <option>Outro</option>
-        </select>
-      </div>
-      <div class="form-group hidden" id="f-defensivo-wrap">
-        <label>Tipo de Defensivo</label>
-        <input type="text" id="f-defensivo" placeholder="ex: Herbicida, Fungicida...">
-      </div>
-      <div class="form-group hidden" id="f-fertilizante-wrap">
-        <label>Tipo de Fertilizante</label>
-        <input type="text" id="f-fertilizante" placeholder="ex: Ureia, MAP, KCL...">
-      </div>
-      <div class="form-group">
-        <label>Descrição</label>
-        <textarea id="f-desc-campo" placeholder="Descreva a atividade realizada..."></textarea>
-      </div>
-      <button class="btn btn-blue" id="f-btn-campo" onclick="salvarRegistro('f','campo')">
-        ✓ Registrar Atividade
-      </button>
-    </div>
+    <div id="pin-erro" class="error-msg hidden">Senha incorreta. Tente novamente.</div>
+    <button class="btn btn-yellow" onclick="verificarPin()" style="margin-top:12px">Entrar</button>
   </div>
 </div>
-
 
 <!-- ══════════════════════════════════════
      APP FUNCIONÁRIO (só registrar)
@@ -776,6 +707,7 @@
     </div>
   </div>
 </div>
+
 <!-- ══════════════════════════════════════
      APP GESTOR (4 abas)
 ══════════════════════════════════════ -->
