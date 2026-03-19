@@ -1283,7 +1283,7 @@ async function salvarRegistro(prefix, tipo) {
       tipo === 'manut' ? '✓ Manutenção registrada!' :
       tipo === 'campo' ? '✓ Atividade registrada!'  : '✓ Abastecimento registrado!',
       tipo === 'manut' ? 'var(--red)' :
-      tipo === 'campo' ? 'var(--blue)' : 'var(--green('
+      tipo === 'campo' ? 'var(--blue)' : 'var(--green)'
     );
   } else {
     showToast('⚠ Erro: ' + (res.erro || 'Tente novamente'), 'var(--red)');
