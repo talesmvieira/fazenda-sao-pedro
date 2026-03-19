@@ -651,6 +651,131 @@
   </div>
 </div>
 
+
+<!-- ══════════════════════════════════════
+     APP FUNCIONÁRIO (só registrar)
+══════════════════════════════════════ -->
+<div id="app-func" class="hidden">
+  <div class="app-header">
+    <div class="header-row">
+      <div class="farm-logo">
+        <div class="logo-icon">🌱</div>
+        <div>
+          <div class="farm-name">Fazenda São Pedro</div>
+          <div class="farm-date" id="func-date"></div>
+        </div>
+      </div>
+      <button class="sair-btn" onclick="voltarLogin()">Sair</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-dot blue"></div>
+      <div class="section-title">Registrar Atividade</div>
+    </div>
+
+    <div class="form-group">
+      <label>Seu Nome</label>
+      <input type="text" id="f-nome" placeholder="Como você é chamado...">
+    </div>
+
+    <div class="type-selector">
+      <div class="type-card" id="f-card-manut" onclick="selecionarTipo('f','manut')">
+        <div class="type-card-icon">🔧</div>
+        <div class="type-card-label">Manutenção</div>
+      </div>
+      <div class="type-card" id="f-card-campo" onclick="selecionarTipo('f','campo')">
+        <div class="type-card-icon">🌾</div>
+        <div class="type-card-label">Campo</div>
+      </div>
+    </div>
+
+    <!-- Subform: manutenção (funcionário) -->
+    <div id="f-form-manut" class="hidden">
+      <div class="form-group">
+        <label>Máquina</label>
+        <select id="f-maq"><option value="">Selecione a máquina...</option></select>
+      </div>
+      <div class="form-group">
+        <label>Tipo de Serviço</label>
+        <select id="f-tipo-serv">
+          <option value="">Selecione...</option>
+          <option>Manutenção Preventiva</option>
+          <option>Manutenção Corretiva</option>
+          <option>Elétrica</option>
+          <option>Pneus / Borracharia</option>
+          <option>Troca de Óleo / Filtros</option>
+          <option>Hidráulica</option>
+          <option>Outro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Horímetro Atual (opcional)</label>
+        <input type="number" id="f-hm" placeholder="ex: 4534">
+      </div>
+      <div class="form-group">
+        <label>Descrição</label>
+        <textarea id="f-desc-manut" placeholder="Descreva o serviço realizado..."></textarea>
+      </div>
+      <div class="form-group">
+        <label>Custo (R$) — opcional</label>
+        <input type="number" id="f-custo" placeholder="0.00" step="0.01">
+      </div>
+      <div class="form-group">
+        <label>Status</label>
+        <select id="f-status">
+          <option value="Concluída">Concluída</option>
+          <option value="Em andamento">Em andamento</option>
+          <option value="Aguardando peça">Aguardando peça</option>
+        </select>
+      </div>
+      <button class="btn btn-red" id="f-btn-manut" onclick="salvarRegistro('f','manut')">
+        ✓ Registrar Manutenção
+      </button>
+    </div>
+
+    <!-- Subform: campo (funcionário) -->
+    <div id="f-form-campo" class="hidden">
+      <div class="form-group">
+        <label>Talhão (opcional)</label>
+        <input type="text" id="f-talhao" placeholder="ex: Talhão 1 / Sede">
+      </div>
+      <div class="form-group">
+        <label>Tipo de Atividade</label>
+        <select id="f-tipo-campo" onchange="onTipoCampo('f')">
+          <option value="">Selecione...</option>
+          <option>Aplicação de Defensivo</option>
+          <option>Aplicação de Fertilizante</option>
+          <option>Plantio</option>
+          <option>Preparo de Solo</option>
+          <option>Colheita</option>
+          <option>Infestação / Praga</option>
+          <option>Problema no Talhão</option>
+          <option>Manejo de Gado</option>
+          <option>Trabalho Curral</option>
+          <option>Manutenção de Cerca</option>
+          <option>Outro</option>
+        </select>
+      </div>
+      <div class="form-group hidden" id="f-defensivo-wrap">
+        <label>Tipo de Defensivo</label>
+        <input type="text" id="f-defensivo" placeholder="ex: Herbicida, Fungicida...">
+      </div>
+      <div class="form-group hidden" id="f-fertilizante-wrap">
+        <label>Tipo de Fertilizante</label>
+        <input type="text" id="f-fertilizante" placeholder="ex: Ureia, MAP, KCL...">
+      </div>
+      <div class="form-group">
+        <label>Descrição</label>
+        <textarea id="f-desc-campo" placeholder="Descreva a atividade realizada..."></textarea>
+      </div>
+      <button class="btn btn-blue" id="f-btn-campo" onclick="salvarRegistro('f','campo')">
+        ✓ Registrar Atividade
+      </button>
+    </div>
+  </div>
+</div>
 <!-- ══════════════════════════════════════
      APP GESTOR (4 abas)
 ══════════════════════════════════════ -->
