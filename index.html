@@ -622,6 +622,10 @@
         <div class="type-card-icon">🌾</div>
         <div class="type-card-label">Campo</div>
       </div>
+      <div class="type-card" id="f-card-abast" onclick="selecionarTipo('f','abast')">
+        <div class="type-card-icon">⛽</div>
+        <div class="type-card-label">Abastecimento</div>
+      </div>
     </div>
 
     <!-- Subform: manutenção (funcionário) -->
@@ -705,6 +709,29 @@
       </div>
       <button class="btn btn-blue" id="f-btn-campo" onclick="salvarRegistro('f','campo')">
         ✓ Registrar Atividade
+      </button>
+    </div>
+
+    <!-- Subform: abastecimento (funcionário) -->
+    <div id="f-form-abast" class="hidden">
+      <div class="form-group">
+        <label>Máquina</label>
+        <select id="f-abast-maq"><option value="">Selecione a máquina...</option></select>
+      </div>
+      <div class="form-group">
+        <label>Horímetro Atual (opcional)</label>
+        <input type="number" id="f-abast-hm" placeholder="ex: 4534">
+      </div>
+      <div class="form-group">
+        <label>Litros Abastecidos</label>
+        <input type="number" id="f-abast-litros" placeholder="ex: 120" step="0.1">
+      </div>
+      <div class="form-group">
+        <label>Observação (opcional)</label>
+        <input type="text" id="f-abast-obs" placeholder="Alguma observação...">
+      </div>
+      <button class="btn btn-green" id="f-btn-abast" onclick="salvarRegistro('f','abast')">
+        ✓ Registrar Abastecimento
       </button>
     </div>
   </div>
@@ -1076,6 +1103,7 @@ function acessarFuncionario() {
   document.getElementById('app-func').classList.remove('hidden');
   document.getElementById('func-date').textContent = dataFormatada();
   populateMaquinas('f-maq');
+  populateMaquinas('f-abast-maq');
 }
 
 function iniciarGestor() {
@@ -1354,6 +1382,7 @@ function renderHistorico() {
 populateMaquinas('a-maq');
 populateMaquinas('r-maq');
 populateMaquinas('f-maq');
+populateMaquinas('f-abast-maq');
 </script>
 </body>
 </html>
