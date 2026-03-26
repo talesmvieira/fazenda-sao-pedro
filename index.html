@@ -898,6 +898,8 @@ async function salvarDesp() {
     limpar(['d-func','d-cat','d-subcat','d-desc','d-valor']);
     document.getElementById('d-subcat-wrap').classList.add('hidden');
     showToast('✓ Despesa registrada!', 'var(--yellow)');
+    const iframe = document.getElementById('dash-frame');
+    if (iframe && iframe.contentWindow) iframe.contentWindow.postMessage('novo-lancamento', '*');
   } else {
     showToast('⚠ Erro: ' + (res.erro || 'Tente novamente'), 'var(--red)');
   }
@@ -977,6 +979,9 @@ async function salvarRegistro(prefix, tipo) {
     const msgs = { manut:'✓ Manutenção registrada!', campo:'✓ Atividade registrada!', abast:'✓ Abastecimento registrado!' };
     const cores = { manut:'var(--red)', campo:'var(--blue)', abast:'var(--green)' };
     showToast(msgs[tipo], cores[tipo]);
+    // Avisa o dashboard para atualizar
+    const iframe = document.getElementById('dash-frame');
+    if (iframe && iframe.contentWindow) iframe.contentWindow.postMessage('novo-lancamento', '*');
   } else {
     showToast('⚠ Erro: ' + (res.erro || 'Tente novamente'), 'var(--red)');
   }
