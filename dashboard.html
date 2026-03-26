@@ -175,6 +175,20 @@ window.addEventListener('DOMContentLoaded', function() {
   document.getElementById('sel-mes').value = String(n.getMonth()+1).padStart(2,'0');
   document.getElementById('sel-ano').value = String(n.getFullYear());
   carregar();
+
+  // Auto-refresh do feed ao vivo a cada 60 segundos
+  setInterval(function() {
+    var hoje = new Date().toLocaleDateString('pt-BR');
+    fetch(SCRIPT_URL + "?payload=" + encodeURIComponent(JSON.stringify({tipo:"historico",limite:50})), {redirect:"follow"})
+      .then(function(r){ return r.json(); })
+      .then(function(d){ if(d.ok && (d.registros||d.dados)) renderFeed(d.registros||d.dados); })
+      .catch(function(){});
+  }, 60000);
+
+  // Escuta mensagem do app principal para recarregar após lançamento
+  window.addEventListener('message', function(e) {
+    if (e.data === 'novo-lancamento') carregar();
+  });
 });
 
 async function carregar() {
