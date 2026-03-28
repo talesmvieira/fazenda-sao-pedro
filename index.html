@@ -732,6 +732,11 @@ function dataHoje() {
          d.getFullYear();
 }
 
+function horaAtual() {
+  const n = new Date();
+  return String(n.getHours()).padStart(2,'0') + ':' + String(n.getMinutes()).padStart(2,'0');
+}
+
 function dataFormatada() {
   const d = new Date();
   const dias = ['domingo','segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado'];
@@ -882,6 +887,7 @@ async function salvarDesp() {
   const payload = {
     tipo: 'despesa',
     data: dataHoje(),
+    hora: horaAtual(),
     funcionario: func,
     categoria: cat,
     subcategoria: document.getElementById('d-subcat').value || cat,
@@ -921,6 +927,7 @@ async function salvarRegistro(prefix, tipo) {
     payload = {
       tipo: 'manutencao',
       data: dataHoje(),
+      hora: horaAtual(),
       funcionario: nome,
       maquina: maq,
       tipoServico: tipoServ,
@@ -937,6 +944,7 @@ async function salvarRegistro(prefix, tipo) {
     payload = {
       tipo: 'campo',
       data: dataHoje(),
+      hora: horaAtual(),
       funcionario: nome,
       talhao: document.getElementById(prefix+'-talhao').value || 'Área geral',
       ocorrencia: tipoCampo,
@@ -953,6 +961,7 @@ async function salvarRegistro(prefix, tipo) {
     payload = {
       tipo: 'abastecimento',
       data: dataHoje(),
+      hora: horaAtual(),
       funcionario: nome,
       maquina: maq,
       horimetro: document.getElementById(prefix+'-abast-hm').value || '—',
@@ -993,7 +1002,8 @@ async function carregarHistorico() {
   const list = document.getElementById('hist-list');
   list.innerHTML = '<div class="loading-state">⏳ Carregando do servidor...</div>';
   try {
-    const payload = { tipo: 'historico', data: new Date().toLocaleDateString('pt-BR') };
+    const hoje = new Date().toLocaleDateString('pt-BR');
+    const payload = { tipo: 'historico', data: hoje, dias: 10 };
     const url = SCRIPT_URL + '?payload=' + encodeURIComponent(JSON.stringify(payload));
     const res = await fetch(url, { redirect: 'follow' });
     const data = await res.json();
