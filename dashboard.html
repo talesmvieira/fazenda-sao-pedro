@@ -167,7 +167,7 @@
 
 </div>
 <script>
-var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxadQBUu7TbC8Z8XdvS9_mbciWkN9bFesqivv69ZM94YhQOtgMAzeTzmVqsL7Lom-oh/exec";
+var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzeN-88sFhEpfBPQT4HQHDVq_rSyC-N3E9_zes3s02-CS5j8Ney83NshJV_gqO0a_k8Cw/exec";
 var G = {};
 
 window.addEventListener('DOMContentLoaded', function() {
@@ -176,12 +176,12 @@ window.addEventListener('DOMContentLoaded', function() {
   document.getElementById('sel-ano').value = String(n.getFullYear());
   carregar();
 
-  // Auto-refresh do feed ao vivo a cada 60 segundos
+  // Auto-refresh do feed ao vivo a cada 60 segundos — só lançamentos de hoje
   setInterval(function() {
     var hoje = new Date().toLocaleDateString('pt-BR');
     fetch(SCRIPT_URL + "?payload=" + encodeURIComponent(JSON.stringify({tipo:"historico",data:hoje})), {redirect:"follow"})
       .then(function(r){ return r.json(); })
-      .then(function(d){ if(d.ok && (d.registros||d.dados)) renderFeed(d.registros||d.dados); })
+      .then(function(d){ if(d.ok && d.registros) renderFeed(d.registros); })
       .catch(function(){});
   }, 60000);
 
