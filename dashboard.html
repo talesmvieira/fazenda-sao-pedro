@@ -179,7 +179,7 @@ window.addEventListener('DOMContentLoaded', function() {
   // Auto-refresh do feed ao vivo a cada 60 segundos
   setInterval(function() {
     var hoje = new Date().toLocaleDateString('pt-BR');
-    fetch(SCRIPT_URL + "?payload=" + encodeURIComponent(JSON.stringify({tipo:"historico",limite:50})), {redirect:"follow"})
+    fetch(SCRIPT_URL + "?payload=" + encodeURIComponent(JSON.stringify({tipo:"historico",data:hoje})), {redirect:"follow"})
       .then(function(r){ return r.json(); })
       .then(function(d){ if(d.ok && (d.registros||d.dados)) renderFeed(d.registros||d.dados); })
       .catch(function(){});
