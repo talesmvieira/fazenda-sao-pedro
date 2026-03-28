@@ -993,7 +993,7 @@ async function carregarHistorico() {
   const list = document.getElementById('hist-list');
   list.innerHTML = '<div class="loading-state">⏳ Carregando do servidor...</div>';
   try {
-    const payload = { tipo: 'historico', limite: 100 };
+    const payload = { tipo: 'historico', data: new Date().toLocaleDateString('pt-BR') };
     const url = SCRIPT_URL + '?payload=' + encodeURIComponent(JSON.stringify(payload));
     const res = await fetch(url, { redirect: 'follow' });
     const data = await res.json();
