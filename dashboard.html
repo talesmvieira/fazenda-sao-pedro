@@ -178,7 +178,10 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // Auto-refresh do feed ao vivo a cada 60 segundos — só lançamentos de hoje
   setInterval(function() {
-    var hoje = new Date().toLocaleDateString('pt-BR');
+    var agora = new Date();
+    var hoje = String(agora.getDate()).padStart(2,'0') + '/' +
+               String(agora.getMonth()+1).padStart(2,'0') + '/' +
+               agora.getFullYear();
     fetch(SCRIPT_URL + "?payload=" + encodeURIComponent(JSON.stringify({tipo:"historico",data:hoje})), {redirect:"follow"})
       .then(function(r){ return r.json(); })
       .then(function(d){ if(d.ok && d.registros) renderFeed(d.registros); })
@@ -194,7 +197,10 @@ window.addEventListener('DOMContentLoaded', function() {
 async function carregar() {
   var mes = document.getElementById('sel-mes').value;
   var ano = document.getElementById('sel-ano').value;
-  var hoje = new Date().toLocaleDateString('pt-BR');
+  var agora = new Date();
+  var hoje = String(agora.getDate()).padStart(2,'0') + '/' +
+             String(agora.getMonth()+1).padStart(2,'0') + '/' +
+             agora.getFullYear();
   limpar();
 
   try {
