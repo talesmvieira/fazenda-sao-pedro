@@ -1001,8 +1001,10 @@ async function carregarHistorico() {
   const list = document.getElementById('hist-list');
   list.innerHTML = '<div class="loading-state">⏳ Carregando do servidor...</div>';
   try {
-    const hoje = new Date().toLocaleDateString('pt-BR');
-    const payload = { tipo: 'historico', data: hoje, dias: 10 };
+    const n = new Date();
+    const mes = String(n.getMonth() + 1).padStart(2, '00').slice(-2);
+    const ano = String(n.getFullYear());
+    const payload = { tipo: 'historico', mes: mes, ano: ano };
     const url = SCRIPT_URL + '?payload=' + encodeURIComponent(JSON.stringify(payload));
     const res = await fetch(url, { redirect: 'follow' });
     const data = await res.json();
